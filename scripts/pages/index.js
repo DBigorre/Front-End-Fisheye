@@ -1,7 +1,11 @@
+import data from '../../data/photographers.json';
     async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
+        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,
         // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
+
+        console.log('bravo ');
+        
+        /*let photographers = [
             {
                 "name": "Ma data test",
                 "id": 1,
@@ -20,10 +24,10 @@
                 "price": 500,
                 "portrait": "account.png"
             },
-        ]
+        ]*/
         // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+        /*return ({
+            photographers: [myPhotographer.name]})*/
     }
 
     async function displayData(photographers) {
@@ -41,6 +45,5 @@
         const { photographers } = await getPhotographers();
         displayData(photographers);
     };
-    
+
     init();
-    
