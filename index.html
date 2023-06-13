@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye</title>
   </head>
-  <body>
+  <!--<body>
     <header>
         <img src="assets/images/logo.png" class="logo" />
         <h1>Nos photographes</h1>
@@ -18,4 +18,16 @@
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/pages/index.js" type="module" ></script>
   </body>
+</html>-->
+<body>
+  <header>
+      <a href="index.html" aria-label="lien vers la page d'accueil" tabindex="0"><img src="assets/images/logo.png" class="logo" alt="logo de Fisheye"/></a>
+      <h1>Nos photographes</h1>
+  </header>
+  <main id="main">
+      <!--section injecté par code javascript-->
+      <div class="photographer_section"></div>
+  </main>
+  <script type="module" src="./scripts/pages/index.js"></script>
+</body>
 </html>
