@@ -2,7 +2,8 @@ async function getPhotographers() {
   try {
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
-    console.log(JSON.stringify(data));
+    const parsedData = JSON.parse(data);
+    console.log(parsedData);
   } catch (error) {
     console.error("Erreur:", error);
   }
