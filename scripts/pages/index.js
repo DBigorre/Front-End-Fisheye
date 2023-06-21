@@ -17,7 +17,7 @@ async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
   const photographerNames = photographers.map((photographer) => photographer.name);
 
-  photographers.forEach((photographer) => {
+  photographers.forEach((data) => {
       const photographerModel = photographerTemplate(photographer);
       const userCardDOM = photographerModel.getUserCardDOM();
       photographersSection.appendChild(userCardDOM);
