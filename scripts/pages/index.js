@@ -1,7 +1,7 @@
 async function getPhotographers() {
   // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet,
   // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-  fetch("../../data.json")
+  fetch("../../data/data.json")
     .then(res=>console.log(res))
 }
 
