@@ -3,7 +3,7 @@ async function getPhotographers() {
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
     if (data && Array.isArray(data.photographers)) {
-      return data.photographers;
+      return data;
     } else {
       console.error("Les données des photographes ne sont pas au format attendu.");
     }
