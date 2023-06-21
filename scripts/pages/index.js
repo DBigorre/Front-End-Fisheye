@@ -4,6 +4,7 @@ async function getPhotographers() {
     const data = await response.json();
     if (data && Array.isArray(data.photographers)) {
       console.log(data);
+      return data.photographers;
     } else {
       console.error("Les données des photographes ne sont pas au format attendu.");
     }
