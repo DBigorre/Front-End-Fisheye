@@ -17,10 +17,13 @@ async function displayData(data) {
     return { key, value };
   });
   console.log(arr);
-  const photographer = Object.entries(arr.value).map(([key, value]) => {
-      return {key , value};
-    });
-  console.log(photographer);
+  for (let photographer of arr) {
+    console.log(photographer);
+    /*const photographerData = Object.entries(arr.value).map(([key, value]) => {
+        return {key , value};
+      });
+    console.log(photographerData);*/
+    }
 }
   /*console.log(data.map(photographer))
   console.log(photographersSection)
