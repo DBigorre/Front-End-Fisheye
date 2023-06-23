@@ -38,8 +38,8 @@ async function displayDataPhotographer(arr) {
 async function init() {
   // Récupère les datas des photographes
   const photographers = await getPhotographers();
-  displayData(data);
-  displayDataPhotographer(arr);
+  displayData(photographers);
+  displayDataPhotographer(photographers);
 }
 
 init();
