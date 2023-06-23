@@ -3,7 +3,7 @@ async function getPhotographers() {
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
     if (data && Array.isArray(data.photographers)) {
-      console.log(data)
+      console.log(typeof(data));
       return data;
     } else {
       console.error("Les données des photographes ne sont pas au format attendu.");
@@ -16,7 +16,7 @@ async function getPhotographers() {
 async function displayData(data) {
   //const photographersSection = document.querySelector(".photographer_section");
   for (let i in data) {
-    console.log(typeof(i) + i)
+    console.log(typeof(i) + i);
   }
   //console.log(data.map(photographer))
   //console.log(photographersSection)
