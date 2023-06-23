@@ -14,11 +14,13 @@ async function getPhotographers() {
 }
 
 async function displayData(data) {
-  //const photographersSection = document.querySelector(".photographer_section");
   const arr = Object.entries(data.photographers).map(([key, value]) => {
     return { key, value };
   });
   console.log(arr)
+  for (let i in arr) {
+    console.log(arr[i]);
+  }
   /*console.log(data.map(photographer))
   console.log(photographersSection)
   const photographerNames = photographers.map((photographer) => photographer.name);
