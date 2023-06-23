@@ -17,11 +17,9 @@ async function displayData(data) {
   const arr = Object.entries(data.photographers).map(([key, value]) => {
     return { key, value };
   });
-  
-  for (let i in arr) {
-    let photographer = Object.entries(arr.values).map(([key, value]) => {
+  let photographer = Object.entries(arr.values).map(([key, value]) => {
     return {key , value};
-    });
+  });
   console.log(photographer)
   }
   /*console.log(data.map(photographer))
@@ -32,7 +30,7 @@ async function displayData(data) {
       const userCardDOM = photographerModel.getUserCardDOM();
       photographersSection.appendChild(userCardDOM);
   });*/
-}
+
 
 async function init() {
   // Récupère les datas des photographes
