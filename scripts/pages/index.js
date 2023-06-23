@@ -15,7 +15,7 @@ async function getPhotographers() {
 
 async function displayData(data) {
   //const photographersSection = document.querySelector(".photographer_section");
-  console.log(data(photographers));
+  console.log(data[0]);
   //console.log(data.map(photographer))
   //console.log(photographersSection)
   const photographerNames = photographers.map((photographer) => photographer.name);
