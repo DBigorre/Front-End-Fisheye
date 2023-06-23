@@ -18,11 +18,10 @@ async function displayData(data) {
   });
   console.log(arr);
   for (let photographer of arr) {
-    console.log(photographer);
-    /*const photographerData = Object.entries(arr.value).map(([key, value]) => {
+    const photographerData = Object.entries(photographer.value).map(([key, value]) => {
         return {key , value};
       });
-    console.log(photographerData);*/
+    console.log(photographerData);
     }
 }
   /*console.log(data.map(photographer))
