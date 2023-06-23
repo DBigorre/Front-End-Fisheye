@@ -16,13 +16,15 @@ async function displayData(data) {
   const arr = Object.entries(data.photographers).map(([key, value]) => {
     return { key, value };
   });
-  console.log(arr);
+  let array = [];
   for (let photographer of arr) {
-    const photographerData = Object.entries(photographer.value).map(([key, value]) => {
+    array.push(photographer);
+    return array;
+    /*const photographerData = Object.entries(photographer.value).map(([key, value]) => {
         return {key , value};
-      });
-    console.log(photographerData);
+      });*/
     }
+    console.log(array);
 }
   /*console.log(data.map(photographer))
   console.log(photographersSection)
