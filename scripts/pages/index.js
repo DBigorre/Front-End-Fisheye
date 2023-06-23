@@ -19,7 +19,9 @@ async function displayData(data) {
   });
   console.log(arr)
   for (let i in arr) {
-    console.log(arr[i]);
+    let photographer = Object.entries(arr.values).map(([key, value]) => {
+    return {key , value};
+    });
   }
   /*console.log(data.map(photographer))
   console.log(photographersSection)
