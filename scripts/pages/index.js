@@ -16,16 +16,16 @@ async function getPhotographers() {
 async function displayData(data) {
   //const photographersSection = document.querySelector(".photographer_section");
   for (let i in data.photographers) {
-    console.log(i.name);
+    console.log(i);
   }
-  //console.log(data.map(photographer))
-  //console.log(photographersSection)
+  /*console.log(data.map(photographer))
+  console.log(photographersSection)
   const photographerNames = photographers.map((photographer) => photographer.name);
   photographers.forEach((photographer) => {
       const photographerModel = photographerTemplate(photographer);
       const userCardDOM = photographerModel.getUserCardDOM();
       photographersSection.appendChild(userCardDOM);
-  });
+  });*/
 }
 
 async function init() {
