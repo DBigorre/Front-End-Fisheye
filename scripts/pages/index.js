@@ -5,6 +5,7 @@ async function getPhotographers() {
     if (data && Array.isArray(data.photographers)) {
       console.log(data);
       return data;
+      console.log(typeof(data))
     } else {
       console.error("Les données des photographes ne sont pas au format attendu.");
     }
