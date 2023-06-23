@@ -19,7 +19,7 @@ async function displayData(data) {
   });
   console.log(data);
   console.log(arr);
-  let photographer = Object.entries(arr.values).map(([key, value]) => {
+  let photographer = Object.entries(arr.value).map(([key, value]) => {
     return {key , value};
   });
   console.log(photographer);
