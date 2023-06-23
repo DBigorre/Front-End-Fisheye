@@ -12,10 +12,10 @@ async function getPhotographers() {
   }
 }
 
-async function displayData(photographers) {
-  const photographersSection = document.querySelector(".photographer_section");
+async function displayData(data) {
+  //const photographersSection = document.querySelector(".photographer_section");
   console.log(data)
-  console.log(photographersSection)
+  //console.log(photographersSection)
   console.log("b")
   const photographerNames = photographers.map((photographer) => photographer.name);
   photographers.forEach((photographer) => {
