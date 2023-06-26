@@ -36,29 +36,23 @@ async function displayData(data) {
 
   const photographersList = document.getElementById("photographersList"); // Sélectionnez l'élément <ul> dans votre HTML
 
-  photographersArray.forEach(photographer => {
-    // Créez un élément <li> pour chaque photographe
-    const listItem = document.createElement("li");
-    listItem.textContent = photographer.name;
-    listItem.textContent = photographer.city;
-    listItem.textContent = photographer.country;
-    listItem.textContent = photographer.portrait;
-
-    // Ajoutez l'élément <li> à la liste
-    photographersList.appendChild(listItem);
-  });
-}
-
-
-/*console.log(data.map(photographer))
-console.log(photographersSection)
-const photographerNames = photographers.map((photographer) => photographer.name);
-photographers.forEach((photographer) => {
-  const photographerModel = photographerTemplate(photographer);
-  const userCardDOM = photographerModel.getUserCardDOM();
-  photographersSection.appendChild(userCardDOM);
-});*/
-
+  arr.forEach(photographer => {
+    // Créez une chaîne de caractères contenant le code HTML pour chaque photographe
+    const photographerHTML = `
+      <li>
+        <h2>${photographer.value.name}</h2>
+        <p>ID: ${photographer.value.id}</p>
+        <p>City: ${photographer.value.city}</p>
+        <p>Country: ${photographer.value.country}</p>
+        <p>Tagline: ${photographer.value.tagline}</p>
+        <p>Price: ${photographer.value.price}</p>
+        <img src="${photographer.value.portrait}" alt="${photographer.value.name}">
+      </li>
+    `;
+      // Ajoutez le code HTML à la liste
+      photographersList.innerHTML += photographerHTML;
+    });
+  }
 
 async function init() {
   // Récupère les datas des photographes
