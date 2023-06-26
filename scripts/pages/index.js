@@ -17,9 +17,8 @@ async function displayData(data) {
     return { key, value };
   });
   for (let photographer of arr) {
-    let photographerData = Object.entries(photographer.value).map(([key2, value2]) => {
-      return (photographerData);
-      //return { key2, value2 };
+    Object.entries(photographer.value).map(([key2, value2]) => {
+      return { key2, value2 };
     });
   };
   //console.log(array);
@@ -38,7 +37,6 @@ async function init() {
   // Récupère les datas des photographes
   const photographers = await getPhotographers();
   displayData(photographers);
-  console.log(photographerData)
 }
 
 init();
