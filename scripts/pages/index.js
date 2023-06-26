@@ -30,7 +30,7 @@ async function displayData(data) {
   for (let photographer of arr) {
     //let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline);
     //return photographerData;
-    console.log(photographer.value.name)
+    console.log(photographer.value)
   };
   //console.log(photographerData);
 }
