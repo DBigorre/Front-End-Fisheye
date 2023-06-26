@@ -33,8 +33,19 @@ async function displayData(data) {
     let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline, photographer.value.portrait);
     photographersArray.push(photographerData);
   };
-  console.log(photographersArray);
+
+  const photographersList = document.getElementById("photographersList"); // Sélectionnez l'élément <ul> dans votre HTML
+
+  photographersArray.forEach(photographer => {
+    // Créez un élément <li> pour chaque photographe
+    const listItem = document.createElement("li");
+    listItem.textContent = photographer.name;
+
+    // Ajoutez l'élément <li> à la liste
+    photographersList.appendChild(listItem);
+  });
 }
+
 
 /*console.log(data.map(photographer))
 console.log(photographersSection)
