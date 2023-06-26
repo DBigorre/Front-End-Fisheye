@@ -20,13 +20,11 @@ async function displayData(data) {
   for (let photographer of arr) {
     console.log(photographer.value)
     const array = Object.entries(photographer.value).map(([key2, value2]) => {
+      console.log(array)
       return { key2, value2 };
     });
-    /*const photographerData = Object.entries(photographer.value).map(([key, value]) => {
-        return {key , value};
-      });*/
-    }
-    console.log(array);
+  };
+  //console.log(array);
 }
   /*console.log(data.map(photographer))
   console.log(photographersSection)
