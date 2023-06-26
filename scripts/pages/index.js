@@ -40,6 +40,9 @@ async function displayData(data) {
     // Créez un élément <li> pour chaque photographe
     const listItem = document.createElement("li");
     listItem.textContent = photographer.name;
+    listItem.textContent = photographer.city;
+    listItem.textContent = photographer.country;
+    listItem.textContent = photographer.portrait;
 
     // Ajoutez l'élément <li> à la liste
     photographersList.appendChild(listItem);
