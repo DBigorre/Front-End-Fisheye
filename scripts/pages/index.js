@@ -16,6 +16,7 @@ async function displayData(data) {
   const arr = Object.entries(data.photographers).map(([key, value]) => {
     return { key, value };
   });
+  console.log(arr)
   let array = [];
   for (let photographer of arr) {
     array.push(photographer);
