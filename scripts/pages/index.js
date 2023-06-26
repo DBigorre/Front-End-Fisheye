@@ -18,6 +18,7 @@ async function displayData(data) {
   });
   for (let photographer of arr) {
     console.log(photographer.value)
+    return(photographer.value)
   };
 }
 /*console.log(data.map(photographer))
