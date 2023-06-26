@@ -18,26 +18,26 @@ async function displayData(data) {
   });
   for (let photographer of arr) {
     let photographerData = Object.entries(photographer.value).map(([key2, value2]) => {
-      console.log(photographerData)
       return { key2, value2 };
     });
   };
   //console.log(array);
 }
-  /*console.log(data.map(photographer))
-  console.log(photographersSection)
-  const photographerNames = photographers.map((photographer) => photographer.name);
-  photographers.forEach((photographer) => {
-      const photographerModel = photographerTemplate(photographer);
-      const userCardDOM = photographerModel.getUserCardDOM();
-      photographersSection.appendChild(userCardDOM);
-  });*/
+/*console.log(data.map(photographer))
+console.log(photographersSection)
+const photographerNames = photographers.map((photographer) => photographer.name);
+photographers.forEach((photographer) => {
+  const photographerModel = photographerTemplate(photographer);
+  const userCardDOM = photographerModel.getUserCardDOM();
+  photographersSection.appendChild(userCardDOM);
+});*/
 
 
 async function init() {
   // Récupère les datas des photographes
   const photographers = await getPhotographers();
   displayData(photographers);
+  console.log(photographerData)
 }
 
 init();
