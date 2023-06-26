@@ -12,15 +12,27 @@ async function getPhotographers() {
   }
 }
 
+class Photographer {
+  constructor(name, id, city, country, tagline) {
+      this.name = name;
+      this.id = id;
+      this.city = city;
+      this.country = country;
+      this.tagline = tagline;
+  }
+}
+
 async function displayData(data) {
   const arr = Object.entries(data.photographers).map(([key, value]) => {
     return { key, value };
   });
   for (let photographer of arr) {
-    console.log(photographer.value)
-    return(photographer.value)
+    let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline);
+    return photographerData;
   };
+  console.log(photographerData);
 }
+
 /*console.log(data.map(photographer))
 console.log(photographersSection)
 const photographerNames = photographers.map((photographer) => photographer.name);
