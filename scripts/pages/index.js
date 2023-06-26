@@ -32,7 +32,7 @@ async function displayData(data) {
     let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline, photographer.value.portrait);
     return photographerData;
   };
-  console.log(Photographer);
+  console.log(Photographer.all);
 }
 
 /*console.log(data.map(photographer))
