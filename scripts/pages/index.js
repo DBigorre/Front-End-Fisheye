@@ -13,13 +13,14 @@ async function getPhotographers() {
 }
 
 class Photographer {
-  constructor(name, id, city, country, tagline, price) {
+  constructor(name, id, city, country, tagline, price, portrait) {
       this.name = name;
       this.id = id;
       this.city = city;
       this.country = country;
       this.tagline = tagline;
       this.price = price;
+      this.portrait = portrait
   }
 }
 
@@ -28,9 +29,9 @@ async function displayData(data) {
     return { key, value };
   });
   for (let photographer of arr) {
-    //let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline);
-    //return photographerData;
-    console.log(photographer.value)
+    let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline, photographer.value.portrait);
+    console.log(photographerData);
+    return photographerData;
   };
   //console.log(photographerData);
 }
