@@ -16,10 +16,10 @@ async function displayData(data) {
   const arr = Object.entries(data.photographers).map(([key, value]) => {
     return { key, value };
   });
-
+  for (let photographer of arr) {
     console.log(photographer.value)
   };
-
+}
 /*console.log(data.map(photographer))
 console.log(photographersSection)
 const photographerNames = photographers.map((photographer) => photographer.name);
