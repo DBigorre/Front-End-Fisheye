@@ -17,10 +17,10 @@ async function displayData(data) {
     return { key, value };
   });
   console.log(arr)
-  let array = [];
   for (let photographer of arr) {
-    array.push(photographer);
-    return array;
+    const array = Object.entries(photographer.value).map(([key2, value2]) => {
+      return { key2, value2 };
+    });
     /*const photographerData = Object.entries(photographer.value).map(([key, value]) => {
         return {key , value};
       });*/
