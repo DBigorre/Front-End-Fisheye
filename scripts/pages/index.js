@@ -33,7 +33,7 @@ async function displayData(data) {
     let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline, photographer.value.portrait);
     photographersArray.push(photographerData);
   };
-  console.log(photographersArray.name)
+  console.log(photographersArray)
 }
 
 async function init() {
