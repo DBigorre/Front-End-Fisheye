@@ -33,13 +33,13 @@ async function displayData(data) {
     let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline, photographer.value.portrait);
     photographersArray.push(photographerData);
   };
-  return photographersArray;
   const photographersList = document.getElementById("photographersList");
   photographersArray.forEach(photographer => {
     const listItem = document.createElement("li");
     listItem.textContent = photographer.name;
     photographersList.appendChild(listItem);
   });
+  return photographersArray;
 }
 
 async function init() {
