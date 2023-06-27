@@ -34,6 +34,12 @@ async function displayData(data) {
     photographersArray.push(photographerData);
   };
   return photographersArray;
+  const photographersList = document.getElementById("photographersList");
+  photographersArray.forEach(photographer => {
+    const listItem = document.createElement("li");
+    listItem.textContent = photographer.name;
+    photographersList.appendChild(listItem);
+  });
 }
 
 async function init() {
