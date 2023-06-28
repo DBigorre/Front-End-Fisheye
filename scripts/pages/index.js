@@ -56,7 +56,7 @@ photographersArray.forEach(photographer => {
   pTaglineElement.textContent = photographer.tagline;
 
   const pPriceElement = document.createElement("p");
-  pPriceElement.textContent = photographer.price + "/jour";
+  pPriceElement.textContent = photographer.price + "€/jour";
 
 
   // Ajouter les éléments à l'élément <li>
