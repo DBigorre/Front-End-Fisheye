@@ -30,7 +30,7 @@ async function displayData(data) {
   });
   let photographersArray = [];
   for (let photographer of arr) {
-    let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline, photographer.value.portrait);
+    let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline, photographer.value.price, photographer.value.portrait);
     photographersArray.push(photographerData);
   };
   // Récupérer l'élément <ul> dans votre HTML
