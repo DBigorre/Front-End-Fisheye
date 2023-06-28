@@ -35,9 +35,8 @@ async function displayData(data) {
   };
   const photographersList = document.getElementById("photographersList");
   photographersArray.forEach(photographer => {
-    const listItem = document.createElement("li");
-    listItem.textContent = photographer.name;
-    photographersList.appendChild(listItem);
+    let photographersName = photographer.name;
+    photographersName.appendChild(photographersName);
   });
   return photographersArray;
 }
