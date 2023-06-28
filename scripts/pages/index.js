@@ -33,11 +33,49 @@ async function displayData(data) {
     let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline, photographer.value.portrait);
     photographersArray.push(photographerData);
   };
-  const photographersList = document.getElementById("photographersList");
-  photographersArray.forEach(photographer => {
-    let photographersList = photographer.name;
-    photographersList.appendChild(photographersList);
-  });
+  // Récupérer l'élément <ul> dans votre HTML
+const photographersList = document.getElementById("photographersList");
+
+// Iterer sur les photographes et ajouter leurs informations à la liste
+photographersArray.forEach(photographer => {
+  // Créer un élément <li>
+  const liElement = document.createElement("li");
+
+  // Créer les éléments HTML pour les informations du photographe
+  const h2Element = document.createElement("h2");
+  h2Element.textContent = photographer.name;
+
+  const pIdElement = document.createElement("p");
+  pIdElement.textContent = "ID: " + photographer.id;
+
+  const pCityElement = document.createElement("p");
+  pCityElement.textContent = "City: " + photographer.city;
+
+  const pCountryElement = document.createElement("p");
+  pCountryElement.textContent = "Country: " + photographer.country;
+
+  const pTaglineElement = document.createElement("p");
+  pTaglineElement.textContent = "Tagline: " + photographer.tagline;
+
+  const pPriceElement = document.createElement("p");
+  pPriceElement.textContent = "Price: " + photographer.price;
+
+  const imgElement = document.createElement("img");
+  imgElement.src = photographer.portrait;
+  imgElement.alt = photographer.name;
+
+  // Ajouter les éléments à l'élément <li>
+  liElement.appendChild(h2Element);
+  liElement.appendChild(pIdElement);
+  liElement.appendChild(pCityElement);
+  liElement.appendChild(pCountryElement);
+  liElement.appendChild(pTaglineElement);
+  liElement.appendChild(pPriceElement);
+  liElement.appendChild(imgElement);
+
+  // Ajouter l'élément <li> à la liste
+  photographersList.appendChild(liElement);
+});
   return photographersArray;
 }
 
