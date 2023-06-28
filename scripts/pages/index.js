@@ -42,36 +42,29 @@ photographersArray.forEach(photographer => {
   const liElement = document.createElement("li");
 
   // Créer les éléments HTML pour les informations du photographe
-  const h2Element = document.createElement("h2");
-  h2Element.textContent = photographer.name;
-
-  const pIdElement = document.createElement("p");
-  pIdElement.textContent = "ID: " + photographer.id;
-
-  const pCityElement = document.createElement("p");
-  pCityElement.textContent = "City: " + photographer.city;
-
-  const pCountryElement = document.createElement("p");
-  pCountryElement.textContent = "Country: " + photographer.country;
-
-  const pTaglineElement = document.createElement("p");
-  pTaglineElement.textContent = "Tagline: " + photographer.tagline;
-
-  const pPriceElement = document.createElement("p");
-  pPriceElement.textContent = "Price: " + photographer.price;
-
   const imgElement = document.createElement("img");
   imgElement.src = photographer.portrait;
   imgElement.alt = photographer.name;
 
+  const h2Element = document.createElement("h2");
+  h2Element.textContent = photographer.name;
+
+  const pCityElement = document.createElement("p");
+  pCityElement.textContent = photographer.city + "," + photographer.country;
+
+  const pTaglineElement = document.createElement("p");
+  pTaglineElement.textContent = photographer.tagline;
+
+  const pPriceElement = document.createElement("p");
+  pPriceElement.textContent = photographer.price + "/jour";
+
+
   // Ajouter les éléments à l'élément <li>
+  liElement.appendChild(imgElement);
   liElement.appendChild(h2Element);
-  liElement.appendChild(pIdElement);
   liElement.appendChild(pCityElement);
-  liElement.appendChild(pCountryElement);
   liElement.appendChild(pTaglineElement);
   liElement.appendChild(pPriceElement);
-  liElement.appendChild(imgElement);
 
   // Ajouter l'élément <li> à la liste
   photographersList.appendChild(liElement);
