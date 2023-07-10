@@ -1,17 +1,6 @@
-async function getPhotographers() {
-  try {
-    const response = await fetch("../../data/photographers.json");
-    const data = await response.json();
-    if (data && Array.isArray(data.photographers)) {
-      return data;
-    } else {
-      console.error("Les données des photographes ne sont pas au format attendu.");
-    }
-  } catch (error) {
-    console.error("Erreur:", error);
-  }
-}
 
+
+/*
 class Photographer {
   constructor(name, id, city, country, tagline, price, portrait) {
       this.name = name;
@@ -71,13 +60,15 @@ photographersArray.forEach(photographer => {
 });
   return photographersArray;
 }
+*/
 
 async function init() {
   // Récupère les datas des photographes
-  const photographers = await getPhotographers();
-  const photographersArray = await displayData(photographers);
+  const datas = await getDatas();
+  const photographers = datas.photographers
+  //const photographersArray = await displayData(photographers);
   //displayData(photographers);
-  console.log(photographersArray)
+  displayListPhotographer(photographers);
 }
 
 init();
