@@ -5,11 +5,17 @@ function displayListPhotographer(photographers) {
     console.log(photographer)
     html += `
       <div>
-        <img src=${photographer.portrait} alt="Portrait du photographe" />
-        <h2>${photographer.name}</h2>
-        <p> ${photographer.city}, ${photographer.country}</p>
-        <p> ${photographer.tagline}</p>
-        <p> ${photographer.price}/jour </p>
+        <article class="photo_link">
+          <a href="#" onclick=return photographerLink();return false;>
+          <img src=assets/photographers/photographersID/${photographer.portrait} alt="Portrait du photographe" />
+          <h2>${photographer.name}</h2>
+        </a>
+        </article>
+        <article class="photo_infos">
+          <p id="city"> ${photographer.city}, ${photographer.country}</p>
+          <p id="tagline"> ${photographer.tagline}</p>
+          <p id="price"> ${photographer.price}€/jour </p>
+        </article>
       </div>
     `
   }

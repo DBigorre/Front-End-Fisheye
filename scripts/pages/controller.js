@@ -61,6 +61,20 @@ photographersArray.forEach(photographer => {
   return photographersArray;
 }
 */
+/*async function photographerLink() {
+  // Sélectionner le nom du photographe et créer un url contenant ce nom
+
+  // Renvoie vers une page avec le nom du photographe(url créee avant)
+    // pb 1: page non créee
+
+    //solution 1: Possibiliter de génerer des pages en bouclant sur les noms des photographes
+    // afin que chacun ait sa page perso sans avoir a coder chaque pages à chaque nouvelle entrée
+    // dans la base de donnée
+
+  // En cas d'erreur dans le lien, ne pas bouger ou renvoyer un message d'erreur
+
+}*/
+
 
 async function init() {
   // Récupère les datas des photographes

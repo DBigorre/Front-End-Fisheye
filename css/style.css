@@ -31,7 +31,7 @@ h1 {
     margin-top: 100px;
 }
 
-.photographer_section ul {
+.photographer_section article{
     justify-self: center;
     display: flex;
     justify-content: center;
@@ -42,9 +42,29 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin-bottom: auto;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#city{
+  color: #901C1C;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-weight: 600;
+}
+
+#tagline{
+  font-weight: 600;
+  margin: auto;
+}
+
+#price{
+  margin: auto;
+  color: #bababa;
 }
