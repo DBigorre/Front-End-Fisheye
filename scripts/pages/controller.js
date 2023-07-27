@@ -1,8 +1,50 @@
 
+  async function init() {
+    // Récupère les datas des photographes
+    const model = new Model();
+    const datas = await  model.getDatas();
+    const photographers = datas.photographers;
+    displayListPhotographer(photographers);
+  };
 
-/*
-class Photographer {
-  constructor(name, id, city, country, tagline, price, portrait) {
+  async function getPhotographerById(){
+    let searchParams = new URLSearchParams(window.location.search);
+    let id = searchParams.get("id");
+  };
+
+  async function photographerInit(){
+    const model = new Model();
+    const datas = await  model.getDatas();
+    const photographers = datas.photographers; //recuperation des photographes
+    const medias = datas.media; // recuperation des medias
+
+    let searchParams = new URLSearchParams(window.location.search);
+    let id = searchParams.get("id"); // recuperation de l'id contenu dans l'url
+
+    const mediaByPhotographerIdArray = []
+    for (let mediaId of medias) {
+      if (mediaId.photographerId == id){
+        mediaByPhotographerIdArray.push(mediaId)
+      };
+    };// recuperation des medias de l'artiste concerné
+    mediaByPhotographerId(mediaByPhotographerIdArray)
+    //console.log(mediaByPhotographerId)
+
+    const photographerPageById = null
+    for (let photographer of photographers){
+      if (photographer.id == id){
+        const photographerPageById = photographer
+        photographerPage(photographerPageById)
+        return(photographerPageById)
+      };
+      //console.log(photographerPageById)
+    };// recuperation des infos de l'artiste concerné
+  };
+
+
+  /*
+  class Photographer {
+    constructor(name, id, city, country, tagline, price, portrait) {
       this.name = name;
       this.id = id;
       this.city = city;
@@ -58,10 +100,12 @@ photographersArray.forEach(photographer => {
   // Ajouter l'élément <li> à la liste
   photographersList.appendChild(liElement);
 });
-  return photographersArray;
+return photographersArray;
 }
 */
 /*async function photographerLink() {
+  //Créer une route pour les shows
+  //get "photographers/:id", to: "photographers#show"
   // Sélectionner le nom du photographe et créer un url contenant ce nom
 
   // Renvoie vers une page avec le nom du photographe(url créee avant)
@@ -76,13 +120,7 @@ photographersArray.forEach(photographer => {
 }*/
 
 
-async function init() {
-  // Récupère les datas des photographes
-  const datas = await getDatas();
-  const photographers = datas.photographers
-  //const photographersArray = await displayData(photographers);
-  //displayData(photographers);
-  displayListPhotographer(photographers);
-}
 
-init();
+/* async function photographerCall{
+
+}*/
