@@ -7,7 +7,7 @@ function displayListPhotographer(photographers) {
       <div>
         <article class="photo_link">
           <a href="photographer.html?id=${photographer.id}" >
-          <img src=assets/photographers/photographersID/${photographer.portrait} alt="Portrait du photographe" />
+          <img src=assets/photographers/photographersID/redim/${photographer.portrait} alt="Portrait du photographe" />
           <h2>${photographer.name}</h2>
         </a>
         </article>

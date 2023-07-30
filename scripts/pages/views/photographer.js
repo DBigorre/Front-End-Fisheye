@@ -15,17 +15,21 @@ function photographerPage(photographer) {
 }
 
 function mediaByPhotographerId(mediaByPhotographerIdArray){
-  // probleme de recuperation d'objet et on de tableau du coup probleme d'iteration
+  // probleme de recuperation d'objet et de tableau du coup probleme d'iteration
+  let photoOfPhotographe = []
   for (let media of mediaByPhotographerIdArray){
-    console.log(media.image)
+    photoOfPhotographe.push(media.image)
   }
-  /*let gallerie = "";
-  gallerie += `
-    <ul>
-      <li> ${media.image} </li>
-    </ul>
-  `
+  console.log(photoOfPhotographe)
+  let gallerie = "";
+  for (let photo of photoOfPhotographe){
+    console.log(photo)
+    gallerie += `
+        <img src=assets/SamplePhotos/Mimi/${photo} alt=${photo} />
 
-  let htmlGallerie = document.querySelector(".photographer_gallerie")
-  htmlGallerie.innerHTML = html*/
+    `
+    let htmlGallerie = document.querySelector(".photographer_gallerie")
+    htmlGallerie.innerHTML = gallerie
+  }
+
 }
