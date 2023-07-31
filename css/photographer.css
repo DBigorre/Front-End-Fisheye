@@ -85,8 +85,27 @@ form input {
 }
 
 .photographer_gallerie img{
+  height: 500px;
   justify-self: center;
-  width: 500px;
-  height: auto;
+  max-width: 500px;
   align-self: center;
+}
+
+#portrait{
+  height: 200px;
+}
+
+.photographer_page{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.photographer_informations{
+
+}
+
+.photographer_page h2{
+  font-size: 64px;
+  color: #DB8876;
+
 }

@@ -1,13 +1,13 @@
 function photographerPage(photographer) {
-  console.log(photographer);
-  console.log(photographer.name)
   let html= "";
   html += `
-
+      <div class="photographer_informations">
         <h2>${photographer.name}</h2>
         <p> ${photographer.city}, ${photographer.country}</p>
         <p> ${photographer.tagline}</p>
         <p> ${photographer.price}€/jour </p>
+      </div>
+        <img id="portrait" src=assets/photographers/photographersID/redim/${photographer.portrait} alt="Portrait du photographe" />
   `
 
   let htmlPhotographerPage = document.querySelector(".photographer_page")

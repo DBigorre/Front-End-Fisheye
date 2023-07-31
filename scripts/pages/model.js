@@ -20,10 +20,32 @@ class Model{
   };
 
   async getMedias(){
-    let medias = this.data.medias
+    let datas = await this.getDatas()
+    return (datas.media) // recuperation de la liste des medias
   };
 
+  async getPhotographers(){
+    let datas = await this.getDatas()
+    return (datas.photographers) // recuperation de la liste des photographes
+  }
+
   async getMediasByPhotographerId(idPhotographer){
-    let media = this.getMedia();
+    const mediaByPhotographerIdArray = []
+    let medias = await this.getMedias();
+    for (let mediaId of medias) {
+      if (mediaId.photographerId == idPhotographer){
+        mediaByPhotographerIdArray.push(mediaId)
+      };
+    };// recuperation des medias de l'artiste concerné et stockage dans le tableau
+    return (mediaByPhotographerIdArray);
+  };
+
+  async getPhotographerById(idPhotographer){
+    let photographerList = await this.getPhotographers();
+    for (let photographer of photographerList){
+      if (photographer.id == idPhotographer){
+        return (photographer);
+      };// recuperation des infos du photographe
+    };
   };
 }

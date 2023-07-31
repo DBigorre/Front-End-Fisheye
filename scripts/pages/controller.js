@@ -13,32 +13,17 @@
   };
 
   async function photographerInit(){
-    const model = new Model();
-    const datas = await  model.getDatas();
-    const photographers = datas.photographers; //recuperation des photographes
-    const medias = datas.media; // recuperation des medias
+    const model = new Model(); // recuperation du model
 
     let searchParams = new URLSearchParams(window.location.search);
     let id = searchParams.get("id"); // recuperation de l'id contenu dans l'url
 
-    const mediaByPhotographerIdArray = []
-    for (let mediaId of medias) {
-      if (mediaId.photographerId == id){
-        mediaByPhotographerIdArray.push(mediaId)
-      };
-    };// recuperation des medias de l'artiste concerné
-    mediaByPhotographerId(mediaByPhotographerIdArray)
-    //console.log(mediaByPhotographerId)
+    let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
+    mediaByPhotographerId(mediaByPhotographerIdArray) //recuperation des medias du photographe
 
-    const photographerPageById = null
-    for (let photographer of photographers){
-      if (photographer.id == id){
-        const photographerPageById = photographer
-        photographerPage(photographerPageById)
-        return(photographerPageById)
-      };
-      //console.log(photographerPageById)
-    };// recuperation des infos de l'artiste concerné
+    let photographer = await model.getPhotographerById(id);
+    console.log(photographer);
+    photographerPage(photographer); // recuperation des infos du photographe
   };
 
 
