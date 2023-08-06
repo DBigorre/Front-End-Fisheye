@@ -100,12 +100,13 @@ form input {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.photographer_informations{
-
-}
-
 .photographer_page h2{
   font-size: 64px;
   color: #DB8876;
+}
 
+#photo_name{
+  color: #901C1C;
+  font-weight: 700;
+  font-size: larger;
 }

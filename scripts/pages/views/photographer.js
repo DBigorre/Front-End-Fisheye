@@ -15,17 +15,25 @@ function photographerPage(photographer) {
 }
 
 function mediaByPhotographerId(mediaByPhotographerIdArray){
-  // probleme de recuperation d'objet et de tableau du coup probleme d'iteration
   let photoOfPhotographe = []
+  let mediaslikes = null
   for (let media of mediaByPhotographerIdArray){
     photoOfPhotographe.push(media.image)
+    console.log(media.image)
+    mediaslikes = media.likes
+    console.log(mediaslikes)
   }
-  console.log(photoOfPhotographe)
   let gallerie = "";
   for (let photo of photoOfPhotographe){
-    console.log(photo)
     gallerie += `
+      <div class="photographie-card">
         <img src=assets/SamplePhotos/Mimi/${photo} alt=${photo} />
+        <div class="infos-of-photo"
+          <p id="photo_name"> ${photo}</p>
+          <p id="photo_like"> ${mediaslikes} </p>
+
+        </div>
+      </div>
 
     `
     let htmlGallerie = document.querySelector(".photographer_gallerie")

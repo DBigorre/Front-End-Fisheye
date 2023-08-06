@@ -22,7 +22,7 @@
     mediaByPhotographerId(mediaByPhotographerIdArray) //recuperation des medias du photographe
 
     let photographer = await model.getPhotographerById(id);
-    console.log(photographer);
+    
     photographerPage(photographer); // recuperation des infos du photographe
   };
 
