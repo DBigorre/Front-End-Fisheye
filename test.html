@@ -4,15 +4,20 @@
     <link href="test.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7a2cacbeef.js" crossorigin="anonymous"></script>
     <title>Test</title>
   </head>
   <body>
     <div class="filter"> Trier par
-      <button class="filter_choice"> Popularité </button>
+      <button class="filter_choice" id="popularity-button"> Popularité <i class="fa-solid fa-chevron-down"></i> </button>
+      <button class="filter_choice" id="date-button"> Date <i class="fa-solid fa-chevron-down"></i></button>
+      <button class="filter_choice" id="title-button"> Titre <i class="fa-solid fa-chevron-down"></i></button>
       <div class="filter_menu">
-        <div class="popularity">Popularité</div>
-        <div class="date">Date</div>
-        <div class="title">Titre</div>
+        <div class="popularity">Popularité <i class="fa-solid fa-chevron-up"></i></div>
+        <hr>
+        <div class="date">Date <i class="fa-solid fa-chevron-up"></i></div>
+        <hr>
+        <div class="title">Titre <i class="fa-solid fa-chevron-up"></i></div>
       </div>
     </div>
   </body>
