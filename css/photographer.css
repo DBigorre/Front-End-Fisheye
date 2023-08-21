@@ -161,3 +161,68 @@ form input {
   align-self: center;
   margin: auto;
 }
+
+.filter_menu{
+  display: none;
+  background-color: #901C1C;
+  color: whitesmoke;
+  width: 100px;
+  height: 120px;
+  font-size: large;
+  margin-left: 8px;
+  padding-top: 8px;
+ }
+
+ #date-button{
+   display: none;
+ }
+
+ #title-button{
+   display: none;
+ }
+
+ #popularity-button{
+   display: block;
+ }
+
+ .filter_choice{
+   background-color: #901C1C;
+   color: whitesmoke;
+   width: 128px;
+   height: 40px;
+   margin-left: 8px;
+   border: 3px whitesmoke solid;
+   display: flex;
+   justify-content: space-between;
+   margin-top: -5px;
+   font-size: 16px;
+ }
+
+ .filter{
+   display: flex;
+ }
+
+ .popularity{
+   display: flex;
+   justify-content: space-between;
+   margin-right: 3px;
+   margin-left: 3px;
+ }
+
+ .date{
+   display: flex;
+   justify-content: space-between;
+   margin-right: 3px;
+   margin-left: 3px;
+ }
+
+ .title{
+   display: flex;
+   justify-content: space-between;
+   margin-right: 3px;
+   margin-left: 3px;
+ }
+
+ i{
+   pointer-events: none;
+ }

@@ -11,41 +11,31 @@ async function filter(){
 };
 
 async function choice_select(){
-  console.log("filter choice ok")
   let filter_menu = document.querySelector(".filter_menu");
   let filter_choice = document.querySelector(".filter_choice");
-  console.log(filter_menu)
-  console.log(filter_choice)
   filter_menu.style.display = "block"
   filter_choice.style.display = "none"
 };
 
 async function filter_menu(){
   const filter_menu = document.querySelector(".filter_menu");
-  let filter_choice = document.querySelector(".filter_choice");
-  const date_btn = document.querySelector("#date-button");
-  const title_btn = document.querySelector("#title-button");
-  const popularity_btn = document.querySelector("#popularity-button");
+  const btn_text = document.querySelector(".filter_choice span");
+  const btn = document.querySelector(".filter_choice");
+  console.log(btn)
 
   filter_menu.addEventListener("click", function (event){
+    btn.style.display = "block"
     if (event.target.classList == "date"){
-      date_btn.style.display = "block"
-      title_btn.style.display = "none"
-      popularity_btn.style.display = "none"
-      filter_choice = date_btn
-      console.log(filter_choice)
+      btn_text.innerHTML = "Date"
+      // il faudra appeler la fonction de tri (à coder)
     }
 
     if (event.target.classList == "title"){
-      title_btn.style.display = "block"
-      date_btn.style.display = "none"
-      popularity_btn.style.display = "none"
+      btn_text.innerHTML = "Titre"
     }
 
     if (event.target.classList == "popularity"){
-      popularity_btn.style.display = "block"
-      date_btn.style.display = "none"
-      title_btn.style.display = "none"
+      btn_text.innerHTML = "Popularité"
     }
     filter_menu.style.display = "none"
   });

@@ -21,7 +21,16 @@
         <div class="photographer_portrait">
 
         </div>
-
+      </div>
+      <div class="filter"> Trier par
+        <button class="filter_choice"> <span>Popularité</span> <i class="fa-solid fa-chevron-down"></i> </button>
+        <div class="filter_menu">
+          <div class="popularity">Popularité <i class="fa-solid fa-chevron-up"></i></div>
+          <hr>
+          <div class="date">Date <i class="fa-solid fa-chevron-up"></i></div>
+          <hr>
+          <div class="title">Titre <i class="fa-solid fa-chevron-up"></i></div>
+        </div>
       </div>
       <div class="photographer_gallerie">
 
@@ -49,6 +58,7 @@
     <script src="/scripts/pages/controller.js"></script>
     <script> photographerInit()</script>
     <script> photographerPortrait()</script>
-    <script> mediaByPhotographerId()</script>
+    <script> filter() </script>
+    <script>total_of_likes_of_photograph()</script>
   </body>
 </html>

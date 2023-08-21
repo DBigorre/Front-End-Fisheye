@@ -1,112 +1,68 @@
 
-  async function init() {
-    // Récupère les datas des photographes
-    const model = new Model();
-    const datas = await  model.getDatas();
-    const photographers = datas.photographers;
-    displayListPhotographer(photographers);
-  };
+async function init() {
+  // Récupère les datas des photographes
+  const model = new Model();
+  const datas = await  model.getDatas();
+  const photographers = datas.photographers;
+  displayListPhotographer(photographers);
+};
 
-  async function getPhotographerById(){
-    let searchParams = new URLSearchParams(window.location.search);
-    let id = searchParams.get("id");
-  };
+async function getPhotographerById(){
+  let searchParams = new URLSearchParams(window.location.search);
+  let id = searchParams.get("id");
+};
 
-  async function photographerInit(){
-    const model = new Model(); // recuperation du model
+async function photographerInit(){
+  const model = new Model(); // recuperation du model
 
-    let searchParams = new URLSearchParams(window.location.search);
-    let id = searchParams.get("id"); // recuperation de l'id contenu dans l'url
+  let searchParams = new URLSearchParams(window.location.search);
+  let id = searchParams.get("id"); // recuperation de l'id contenu dans l'url
 
-    let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
-    mediaByPhotographerId(mediaByPhotographerIdArray) //recuperation des medias du photographe
+  let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
+  mediaByPhotographerId(mediaByPhotographerIdArray); //recuperation des medias du photographe
 
-    let photographer = await model.getPhotographerById(id);
+  let photographer = await model.getPhotographerById(id);
 
-    photographerPage(photographer); // recuperation des infos du photographe
-    photographerPortrait(photographer);
-  };
+  photographerPage(photographer); // recuperation des infos du photographe
+  photographerPortrait(photographer);
+};
 
+async function filter_by_btn_title() {
+  const model = new Model(); // recuperation du model
 
-  /*
-  class Photographer {
-    constructor(name, id, city, country, tagline, price, portrait) {
-      this.name = name;
-      this.id = id;
-      this.city = city;
-      this.country = country;
-      this.tagline = tagline;
-      this.price = price;
-      this.portrait = portrait
-  }
+  let searchParams = new URLSearchParams(window.location.search);
+  let id = searchParams.get("id"); // recuperation de l'id contenu dans l'url
+
+  let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
+  filter_by_title(mediaByPhotographerIdArray);
 }
 
-async function displayData(data) {
-  const arr = Object.entries(data.photographers).map(([key, value]) => {
-    return { key, value };
-  });
-  let photographersArray = [];
-  for (let photographer of arr) {
-    let photographerData = new Photographer(photographer.value.name, photographer.value.id, photographer.value.city, photographer.value.country, photographer.value.tagline, photographer.value.price, photographer.value.portrait);
-    photographersArray.push(photographerData);
-  };
-  // Récupérer l'élément <ul> dans votre HTML
-const photographersList = document.getElementById("photographersList");
+async function filter_by_btn_popularity() {
+  const model = new Model(); // recuperation du model
 
-// Iterer sur les photographes et ajouter leurs informations à la liste
-photographersArray.forEach(photographer => {
-  // Créer un élément <li>
-  const liElement = document.createElement("li");
+  let searchParams = new URLSearchParams(window.location.search);
+  let id = searchParams.get("id"); // recuperation de l'id contenu dans l'url
 
-  // Créer les éléments HTML pour les informations du photographe
-  const imgElement = document.createElement("img");
-  imgElement.src = photographer.portrait;
-  imgElement.alt = photographer.name;
-
-  const h2Element = document.createElement("h2");
-  h2Element.textContent = photographer.name;
-
-  const pCityElement = document.createElement("p");
-  pCityElement.textContent = photographer.city + "," + photographer.country;
-
-  const pTaglineElement = document.createElement("p");
-  pTaglineElement.textContent = photographer.tagline;
-
-  const pPriceElement = document.createElement("p");
-  pPriceElement.textContent = photographer.price + "€/jour";
-
-
-  // Ajouter les éléments à l'élément <li>
-  liElement.appendChild(imgElement);
-  liElement.appendChild(h2Element);
-  liElement.appendChild(pCityElement);
-  liElement.appendChild(pTaglineElement);
-  liElement.appendChild(pPriceElement);
-
-  // Ajouter l'élément <li> à la liste
-  photographersList.appendChild(liElement);
-});
-return photographersArray;
+  let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
+  filter_by_popularity(mediaByPhotographerIdArray);
 }
-*/
-/*async function photographerLink() {
-  //Créer une route pour les shows
-  //get "photographers/:id", to: "photographers#show"
-  // Sélectionner le nom du photographe et créer un url contenant ce nom
 
-  // Renvoie vers une page avec le nom du photographe(url créee avant)
-    // pb 1: page non créee
+async function filter_by_btn_date() {
+  const model = new Model(); // recuperation du model
 
-    //solution 1: Possibiliter de génerer des pages en bouclant sur les noms des photographes
-    // afin que chacun ait sa page perso sans avoir a coder chaque pages à chaque nouvelle entrée
-    // dans la base de donnée
+  let searchParams = new URLSearchParams(window.location.search);
+  let id = searchParams.get("id"); // recuperation de l'id contenu dans l'url
 
-  // En cas d'erreur dans le lien, ne pas bouger ou renvoyer un message d'erreur
+  let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
+  filter_by_date(mediaByPhotographerIdArray);
+}
 
-}*/
+async function total_of_likes_of_photograph(){
+  const model = new Model(); // recuperation du model
 
+  let searchParams = new URLSearchParams(window.location.search);
+  let id = searchParams.get("id"); // recuperation de l'id contenu dans l'url
 
-
-/* async function photographerCall{
-
-}*/
+  let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
+  total_of_likes(mediaByPhotographerIdArray);
+}

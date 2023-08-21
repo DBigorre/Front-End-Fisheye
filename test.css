@@ -59,7 +59,6 @@
   margin-left: 3px;
 }
 
-.filter_choice{
-  position: relative;
-  z-index: 2;
+i{
+  pointer-events: none;
 }
