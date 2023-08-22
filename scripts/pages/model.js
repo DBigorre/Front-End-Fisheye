@@ -29,14 +29,23 @@ class Model{
     return (datas.photographers) // recuperation de la liste des photographes
   }
 
-  async getMediasByPhotographerId(idPhotographer){
-    const mediaByPhotographerIdArray = []
+  async getMediasByPhotographerId(idPhotographer, type = "popularity"){
+    let mediaByPhotographerIdArray = []
     let medias = await this.getMedias();
     for (let mediaId of medias) {
       if (mediaId.photographerId == idPhotographer){
         mediaByPhotographerIdArray.push(mediaId)
       };
     };// recuperation des medias de l'artiste concerné et stockage dans le tableau
+    if (type == "date"){
+      mediaByPhotographerIdArray = mediaByPhotographerIdArray.sort((a, b) => b.date.localeCompare(a.date));
+    }
+    else if (type == "popularity"){
+      mediaByPhotographerIdArray = mediaByPhotographerIdArray.sort((x, y) => y.likes - x.likes);
+    }
+    else{
+      mediaByPhotographerIdArray = mediaByPhotographerIdArray.sort((a, b) => a.title.localeCompare(b.title));
+    }
     return (mediaByPhotographerIdArray);
   };
 

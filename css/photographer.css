@@ -93,6 +93,7 @@ form input {
   justify-self: center;
   align-self: center;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .infos-of-photo{
@@ -225,4 +226,20 @@ form input {
 
  i{
    pointer-events: none;
+ }
+
+ .square_total_likes{
+  background-color: #DB8876;
+  position: sticky;
+  bottom: 0;
+  left: 76%;
+  width: 22%;
+  font-size: larger;
+  font-weight: bold;
+ }
+
+ .square{
+  display: flex;
+  gap: 24px;
+  justify-content: space-around;
  }
