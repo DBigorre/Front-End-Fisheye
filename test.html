@@ -8,17 +8,30 @@
     <title>Test</title>
   </head>
   <body>
-    <div class="filter"> Trier par
-      <button class="filter_choice"> <span>Popularité</span> <i class="fa-solid fa-chevron-down"></i> </button>
-      <div class="filter_menu">
-        <div class="popularity">Popularité <i class="fa-solid fa-chevron-up"></i></div>
-        <hr>
-        <div class="date">Date <i class="fa-solid fa-chevron-up"></i></div>
-        <hr>
-        <div class="title">Titre <i class="fa-solid fa-chevron-up"></i></div>
+    <div class="images">
+      <img src=testimage/chaton1.jpeg id="0" alt="" />
+      <img src=testimage/chaton2.jpg id="1" alt="" />
+      <img src=testimage/chiot1.jpg id="2" alt="" />
+      <img src=testimage/chiot2.jpg id="3" alt="" />
+      <img src=testimage/chiot3.jpg id="4" alt="" />
+    </div>
+    <div class="lightbox">
+      <div id="close">
+        <i class="fa-regular fa-circle-xmark"></i>
+      </div>
+      <div class="carousel">
+        <button id="less"> - </button>
+        <div class="result">
+          <div class="carousel-container">
+          </div>
+        </div>
+        <button id="more"> + </button>
       </div>
     </div>
   </body>
   <script src="test.js"></script>
+  <script>displayLightbox()</script>
   
+
+
 </html>

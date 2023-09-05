@@ -1,64 +1,45 @@
-.filter_menu{
- display: none;
- background-color: #901C1C;
- color: whitesmoke;
- width: 100px;
- height: 120px;
- font-size: large;
- margin-left: 8px;
- padding-top: 8px;
+/*.carousel-container {
+  width: 300px;
+  overflow: hidden;
+  position: relative;
 }
 
-#date-button{
+.carousel-slide {
+  width: 100%;
+}
+*/
+
+.images img{
+  width: 200px;
+  height: 200px;
+}
+
+.lightbox{
   display: none;
+  width: 80%;
+  height: 800px;
+  background-color: grey;
+  position: absolute;
+  top: 80px;
+  left: 160px;
 }
 
-#title-button{
-  display: none;
+button{
+  height: 20px;
 }
 
-#popularity-button{
-  display: block;
+.carousel-container{
+  display: flex;
 }
 
-.filter_choice{
-  background-color: #901C1C;
-  color: whitesmoke;
-  width: 128px;
-  height: 40px;
-  margin-left: 8px;
-  border: 3px whitesmoke solid;
+.carousel{
   display: flex;
   justify-content: space-between;
-  margin-top: -5px;
-  font-size: 16px;
+  align-items: center;
 }
 
-.filter{
-  display: flex;
-}
-
-.popularity{
-  display: flex;
-  justify-content: space-between;
-  margin-right: 3px;
-  margin-left: 3px;
-}
-
-.date{
-  display: flex;
-  justify-content: space-between;
-  margin-right: 3px;
-  margin-left: 3px;
-}
-
-.title{
-  display: flex;
-  justify-content: space-between;
-  margin-right: 3px;
-  margin-left: 3px;
-}
-
-i{
-  pointer-events: none;
+#close{
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }

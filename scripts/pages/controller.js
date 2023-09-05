@@ -43,3 +43,26 @@ async function recoverMediaByIdForTotalOfLikes(){
 
   calculateTotalOfLikes(mediaByPhotographerIdArray, photographer);
 }
+
+/*function IncrementateLike() {
+  let hearts = document.querySelectorAll(".fa-heart")
+
+  hearts.forEach(heart => {
+    console.log(heart)
+    heart.addEventListener("click", function () {
+
+      console.log("ça marche")
+
+    });
+  });
+};*/
+
+async function recoverPhotoIdForZoom(){
+  const model = new Model();
+
+  let id = getIdFromUrl();
+
+  let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
+
+  displayModalOfPhoto(mediaByPhotographerIdArray);
+}
