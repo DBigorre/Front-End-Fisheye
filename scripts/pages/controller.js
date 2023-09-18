@@ -17,7 +17,7 @@ async function photographerInit(){
 
   let photographer = await model.getPhotographerById(id);
 
-  displayPhotographerPage(photographer); // recuperation des infos du photographe
+  displayPhotographerPage(photographer, mediaByPhotographerIdArray); // recuperation des infos du photographe
   getPhotographerPortrait(photographer);
   filter();
 };
@@ -64,5 +64,5 @@ async function recoverPhotoIdForZoom(){
 
   let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
 
-  displayModalOfPhoto(mediaByPhotographerIdArray);
+  displayLightbox(mediaByPhotographerIdArray);
 }

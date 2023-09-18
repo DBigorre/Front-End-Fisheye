@@ -1,5 +1,6 @@
-function displayPhotographerPage(photographer) {
+function displayPhotographerPage(photographer, mediaByPhotographerIdArray) {
   let html= "";
+
   html += `
     <div class="photographer_informations">
       <h2>${photographer.name}</h2>
@@ -10,6 +11,7 @@ function displayPhotographerPage(photographer) {
 
   let htmlPhotographerPage = document.querySelector(".photographer_page")
   htmlPhotographerPage.innerHTML = html
+  remplirLightbox(mediaByPhotographerIdArray)
 }
 
 function getPhotographerPortrait(photographer){
@@ -65,10 +67,10 @@ async function getFilterChoice(){
 
 function createHtmlMediaFactorie(media) {
   if(media.image){
-    htmlMedia = `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} alt=${media.image} />`
+    htmlMedia = `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} data-id=${media.id} alt=${media.image} />`
   }
   else{
-    htmlMedia = ` <video src=assets/SamplePhotos/${media.photographerId}/${media.video} alt=${media.video} /> `
+    htmlMedia = ` <video src=assets/SamplePhotos/${media.photographerId}/${media.video} data-id=${media.id} alt=${media.video} /> `
   }
  return htmlMedia
 }
@@ -76,12 +78,13 @@ function createHtmlMediaFactorie(media) {
 function displayMediaByPhotographerId(mediaByPhotographerIdArray){
   let gallerie = "";
   let htmlMedia = "";
+
   for (let media of mediaByPhotographerIdArray){
     htmlMedia = createHtmlMediaFactorie(media);
     gallerie += `
       <div class="photographie-card">
         ${htmlMedia}
-        <div class="infos-of-photo"
+        <div class="infos-of-photo">
           <p id="photo_name"> ${media.title}</p>
           <div class="photolike_with_icone">
             <p id="photo_like"> ${media.likes} </p>
@@ -114,27 +117,75 @@ function calculateTotalOfLikes(mediaByPhotographerIdArray, photographer){
   htmlSquare.innerHTML = square_of_likes
 }
 
-function displayModalOfPhoto(mediaByPhotographerIdArray){
-  let miniatures = document.querySelectorAll(".photographie-card")
-  let zoom_modal = document.querySelector("#zoom_modal")
-  htmlMedia = "";
-  zoom_photo = ""
-  for (let miniature of miniatures){
-    miniature.addEventListener("click", function (event){
-      zoom_modal.style.display = "block"
+async function displayLightbox(mediaByPhotographerIdArray){
+  let images = document.querySelectorAll("img");
+  for (let image of images){
+    image.addEventListener("click", function (event){
+      let id = event.target.dataset.id
+      realDisplayLightbox(id)
     });
-  }
-  for ( let media of mediaByPhotographerIdArray){
-    htmlMedia = createHtmlMediaFactorie(media);
+  };
+};
 
-    zoom_photo += `
-      <i class="fa-solid fa-chevron-left"></i>
-      ${htmlMedia}
-      <i class="fa-solid fa-chevron-right"></i>
+function realDisplayLightbox(id){
+  let elementById = document.getElementById(id)
+  let lightbox = document.querySelector(".lightbox");
+  lightbox.style.display = "block";
+  elementById.classList.add("visible");
+};
+
+function remplirLightbox(mediaByPhotographerIdArray){
+  let lightboxHtml = "";
+
+  for (let media of mediaByPhotographerIdArray){
+    lightboxHtml += `
+    <img src=assets/SamplePhotos/${media.photographerId}/${media.image} id=${media.id} alt="" />
     `
   }
 
-  let htmlZoom = document.querySelector(".zoom")
-  htmlZoom.innerHTML = zoom_photo
+  let htmlcontainer = document.querySelector(".carousel-container")
+  htmlcontainer.innerHTML = lightboxHtml
+  eventlistenerBtn()
+};
 
+
+function eventlistenerBtn(){
+  let close = document.querySelector("#close")
+  let less = document.querySelector("#less")
+  let more = document.querySelector("#more")
+
+  close.addEventListener("click", function(){
+    closeLightbox()
+  });
+
+  less.addEventListener("click", function(){
+    lessInLightbox()
+  });
+
+  more.addEventListener("click", function(){
+    moreInLightbox()
+  });
+};
+
+function closeLightbox() {
+  let lightbox = document.querySelector(".lightbox")
+
+  lightbox.style.display = "none"
+};
+
+function lessInLightbox() {
+  let image = document.querySelector(".carousel-container img.visible");
+  let imagePrecedente = image.previousElementSibling;
+  //console.log(lightboxHtml.length)
+  //let derniereImage = lightboxHtml[lightboxHtml.length - 1];
+  //console.log(derniereImage)
+  image.classList.remove("visible");
+  imagePrecedente.classList.add("visible");
+};
+
+function moreInLightbox(){
+  let image = document.querySelector(".carousel-container img.visible");
+  let imageSuivante = image.nextElementSibling;
+  image.classList.remove("visible");
+  imageSuivante.classList.add("visible");
 };

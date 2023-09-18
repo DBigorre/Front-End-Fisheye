@@ -76,113 +76,112 @@ form input {
 }
 
 .photographer_gallerie{
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-gap: 32px;
-margin: auto;
-margin-top: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 32px;
+  margin: auto;
+  margin-top: 25px;
 }
 
 .photographie-card{
-margin: auto;
+  margin: auto;
 }
 
 .photographer_gallerie img{
-height: 400px;
-width: 400px;
-justify-self: center;
-align-self: center;
-object-fit: cover;
-border-radius: 8px;
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .photographer_gallerie video{
   height: 400px;
   width: 400px;
-  justify-self: center;
-  align-self: center;
   object-fit: cover;
   border-radius: 8px;
 }
 
 
 .infos-of-photo{
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 #photo_like{
-margin-top: 0px;
+  margin-top: 0px;
 }
 
 .photolike_with_icone{
-display: flex;
-gap: 8px;
-margin-top: 2px
+  display: flex;
+  gap: 8px;
+  margin-top: 19px;
+  color: #901C1C;
+  font-weight: 700;
+  font-size: larger;
 }
 
 #portrait{
-height: 200px;
-border-radius: 50%;
-align-self: self-start;
+  height: 200px;
+  border-radius: 50%;
+  align-self: self-start;
 }
 
 .photographer_page h2{
-font-size: 56px;
-margin-bottom: 0px;
-color: #DB8876;
+  font-size: 56px;
+  margin-bottom: 0px;
+  color: #DB8876;
 }
 
 #photo_name{
-color: #901C1C;
-font-weight: 700;
-font-size: larger;
+  color: #901C1C;
+  font-weight: 700;
+  font-size: larger;
 }
 
 .photographer_informations{
-grid-column: 1 / 3;
-margin-left: 24px;
+  grid-column: 1 / 3;
+  margin-left: 24px;
 }
 
 .contact_button{
-grid-column: 2 / 3;
-align-self: center;
-margin: auto;
+  grid-column: 2 / 3;
+  align-self: center;
+  margin: auto;
 }
 
 #portrait{
-grid-column: 3 / 3;
-width: 200px;
-object-fit: cover;
+  grid-column: 3 / 3;
+  width: 200px;
+  object-fit: cover;
 }
 
 .photograph-header{
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 #phograph_city{
-color: #901C1C;
-margin-top: 5px;
-font-size: 32px;
-margin-bottom: 0px;
+  color: #901C1C;
+  margin-top: 5px;
+  font-size: 32px;
+  margin-bottom: 0px;
 }
 
 .photographer_portrait{
-align-self: center;
-margin: auto;
+  align-self: center;
+  margin: auto;
 }
 
 .filter_menu{
-display: none;
-background-color: #901C1C;
-color: whitesmoke;
-width: 134px;
-height: 120px;
-font-size: 16px;
-margin-left: 8px;
-padding-top: 8px;
-font-weight: initial;
+  display: none;
+  background-color: #901C1C;
+  color: whitesmoke;
+  width: 134px;
+  height: 120px;
+  font-size: 16px;
+  margin-left: 8px;
+  padding-top: 8px;
+  font-weight: initial;
 }
 
 #date-button{
@@ -211,12 +210,12 @@ font-weight: initial;
 }
 
 .filter_choice span{
-align-self: center;
-margin: auto;
+  align-self: center;
+  margin: auto;
 }
 
 .filter_choice .fa-chevron-down{
-margin: auto;
+  margin: auto;
 }
 
 .filter{
@@ -253,51 +252,66 @@ i{
 }
 
 .square_total_likes{
-background-color: #DB8876;
-position: sticky;
-bottom: 0;
-left: 76%;
-width: 22%;
-font-size: larger;
-font-weight: bold;
+  background-color: #DB8876;
+  position: sticky;
+  bottom: 0;
+  left: 76%;
+  width: 22%;
+  font-size: larger;
+  font-weight: bold;
 }
 
 .square{
-display: flex;
-gap: 24px;
-justify-content: space-around;
+  display: flex;
+  gap: 24px;
+  justify-content: space-around;
 }
 
 .fa-heart{
-margin-top: 2px;
+  margin-top: 2px;
 }
 
-#zoom_modal{
+.images img{
+  width: 200px;
+  height: 200px;
+}
+
+.lightbox{
+  display: none;
+  width: 80%;
+  height: 800px;
+  background-color: grey;
+  position: absolute;
+  top: 80px;
+  left: 160px;
+}
+
+button{
+  height: 20px;
+}
+
+.carousel-container{
+  display: flex;
+}
+
+.carousel{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#close{
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.carousel-container img{
+  width: 35%;
+  margin: auto;
   display: none;
 }
 
-.zoom{
-  position: absolute;
-  top: 25px;
-  border-radius: 5px;
-  background-color: #DB8876;
-  width: 1525px;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  
-}
-
-.zoom img{
-  height: inherit;
-  margin: auto;
-  width: inherit;
-}
-
-.zoom video{
-  height: inherit;
-  margin: auto;
-  width: inherit;
+.visible{
+  display: block !important;
 }
