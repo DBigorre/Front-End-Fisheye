@@ -20,6 +20,7 @@ async function photographerInit(){
   displayPhotographerPage(photographer, mediaByPhotographerIdArray); // recuperation des infos du photographe
   getPhotographerPortrait(photographer);
   filter();
+  incrementateLike()
 };
 
 async function filterByBtn(type = "popularity"){
@@ -44,18 +45,20 @@ async function recoverMediaByIdForTotalOfLikes(){
   calculateTotalOfLikes(mediaByPhotographerIdArray, photographer);
 }
 
-/*function IncrementateLike() {
-  let hearts = document.querySelectorAll(".fa-heart")
-
-  hearts.forEach(heart => {
-    console.log(heart)
-    heart.addEventListener("click", function () {
-
+function incrementateLike() {
+  let hearts = document.querySelectorAll(".photolike_with_icone")
+  console.log(hearts)
+  for (let heart of hearts){
+    heart.addEventListener("click", (e) => {
+      console.log(e)
       console.log("ça marche")
 
     });
-  });
-};*/
+
+  }
+  /*hearts.forEach(heart => {
+  });*/
+};
 
 async function recoverPhotoIdForZoom(){
   const model = new Model();
@@ -64,5 +67,5 @@ async function recoverPhotoIdForZoom(){
 
   let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
 
-  displayLightbox(mediaByPhotographerIdArray);
+  displayLightbox();
 }

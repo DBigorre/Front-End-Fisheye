@@ -70,7 +70,7 @@ function createHtmlMediaFactorie(media) {
     htmlMedia = `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} data-id=${media.id} alt=${media.image} />`
   }
   else{
-    htmlMedia = ` <video src=assets/SamplePhotos/${media.photographerId}/${media.video} data-id=${media.id} alt=${media.video} /> `
+    htmlMedia = ` <video src=assets/SamplePhotos/${media.photographerId}/${media.video} data-id=${media.id} alt=${media.video} ></video> `
   }
  return htmlMedia
 }
@@ -117,20 +117,31 @@ function calculateTotalOfLikes(mediaByPhotographerIdArray, photographer){
   htmlSquare.innerHTML = square_of_likes
 }
 
-async function displayLightbox(mediaByPhotographerIdArray){
+async function displayLightbox(){
   let images = document.querySelectorAll("img");
+  let videos = document.querySelectorAll("video");
   for (let image of images){
     image.addEventListener("click", function (event){
       let id = event.target.dataset.id
       realDisplayLightbox(id)
     });
   };
+  for (let video of videos){
+    video.addEventListener("click", function (event){
+      let id = event.target.dataset.id
+      realDisplayLightbox(id)
+    });
+  }
 };
 
 function realDisplayLightbox(id){
   let elementById = document.getElementById(id)
   let lightbox = document.querySelector(".lightbox");
   lightbox.style.display = "block";
+  let medias = document.querySelectorAll(".carousel-container *")
+  for(let media of medias){
+    media.classList.remove("visible");
+  }
   elementById.classList.add("visible");
 };
 
@@ -138,9 +149,11 @@ function remplirLightbox(mediaByPhotographerIdArray){
   let lightboxHtml = "";
 
   for (let media of mediaByPhotographerIdArray){
-    lightboxHtml += `
-    <img src=assets/SamplePhotos/${media.photographerId}/${media.image} id=${media.id} alt="" />
-    `
+    if(media.image){
+      lightboxHtml += `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} id=${media.id} alt="" />`
+    }else{
+      lightboxHtml += `<video src=assets/SamplePhotos/${media.photographerId}/${media.video} id=${media.id} alt="" ></video>`
+    }
   }
 
   let htmlcontainer = document.querySelector(".carousel-container")
@@ -169,16 +182,15 @@ function eventlistenerBtn(){
 
 function closeLightbox() {
   let lightbox = document.querySelector(".lightbox")
-
   lightbox.style.display = "none"
 };
 
 function lessInLightbox() {
   let image = document.querySelector(".carousel-container img.visible");
   let imagePrecedente = image.previousElementSibling;
-  //console.log(lightboxHtml.length)
-  //let derniereImage = lightboxHtml[lightboxHtml.length - 1];
-  //console.log(derniereImage)
+  if(imagePrecedente == null){
+    imagePrecedente = document.querySelector(".carousel-container img:last-child")
+  }
   image.classList.remove("visible");
   imagePrecedente.classList.add("visible");
 };
@@ -186,6 +198,11 @@ function lessInLightbox() {
 function moreInLightbox(){
   let image = document.querySelector(".carousel-container img.visible");
   let imageSuivante = image.nextElementSibling;
+  if(imageSuivante == null){
+    imageSuivante = document.querySelector(".carousel-container img:first-child")
+  }
   image.classList.remove("visible");
   imageSuivante.classList.add("visible");
 };
+
+// probleme de css +++

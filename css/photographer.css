@@ -312,6 +312,12 @@ button{
   display: none;
 }
 
+.carousel-container video{
+  width: 35%;
+  margin: auto;
+  display: none;
+}
+
 .visible{
   display: block !important;
 }
