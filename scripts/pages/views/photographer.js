@@ -108,7 +108,9 @@ function calculateTotalOfLikes(mediaByPhotographerIdArray, photographer){
   }
   square_of_likes += `
     <div class="square">
-      <p> ${total_of_likes} <i class="fa-solid fa-heart"></i></p>
+      <div class="squareLike">
+        <p id="totalLikesNumber"> ${total_of_likes}</p> <i class="fa-solid fa-heart"></i>
+      </div>
       <p> ${photographer.price}€/jour </p>
     </div>
   `
@@ -117,6 +119,7 @@ function calculateTotalOfLikes(mediaByPhotographerIdArray, photographer){
   htmlSquare.innerHTML = square_of_likes
 }
 
+// carousel
 async function displayLightbox(){
   let images = document.querySelectorAll("img");
   let videos = document.querySelectorAll("video");
@@ -187,19 +190,31 @@ function closeLightbox() {
 
 function lessInLightbox() {
   let image = document.querySelector(".carousel-container img.visible");
-  let imagePrecedente = image.previousElementSibling;
-  if(imagePrecedente == null){
-    imagePrecedente = document.querySelector(".carousel-container img:last-child")
+  let video = document.querySelector(".carousel-container video.visible");
+  let imagePrecedente = ""
+
+  if(image){
+    imagePrecedente = image.previousElementSibling;
+    image.classList.remove("visible");
+
+  } else {
+    imagePrecedente = video.previousElementSibling;
+    video.classList.remove("visible");
   }
-  image.classList.remove("visible");
+  console.log(imagePrecedente)
+  if(imagePrecedente == null){
+    imagePrecedente = document.querySelector(".carousel-container :last-child")
+  }
+
   imagePrecedente.classList.add("visible");
+
 };
 
 function moreInLightbox(){
-  let image = document.querySelector(".carousel-container img.visible");
+  let image = document.querySelector(".carousel-container .visible");
   let imageSuivante = image.nextElementSibling;
   if(imageSuivante == null){
-    imageSuivante = document.querySelector(".carousel-container img:first-child")
+    imageSuivante = document.querySelector(".carousel-container :first-child")
   }
   image.classList.remove("visible");
   imageSuivante.classList.add("visible");

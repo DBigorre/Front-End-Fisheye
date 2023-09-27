@@ -321,3 +321,13 @@ button{
 .visible{
   display: block !important;
 }
+
+.liked{
+  font-weight: bolder !important;
+}
+
+.squareLike{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

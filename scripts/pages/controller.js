@@ -46,18 +46,57 @@ async function recoverMediaByIdForTotalOfLikes(){
 }
 
 function incrementateLike() {
-  let hearts = document.querySelectorAll(".photolike_with_icone")
+  let hearts = document.querySelectorAll(".photolike_with_icone");
+  let numberOfLike = 0;
+  let totalOfLikeIncrementate = 0;
+
   console.log(hearts)
   for (let heart of hearts){
     heart.addEventListener("click", (e) => {
-      console.log(e)
-      console.log("ça marche")
+      let likesString = heart.querySelector("#photo_like")
+      let contenu = likesString.textContent;
+      let heartIcon = heart.querySelector(".fa-heart");
+      let totalOfLikes = document.querySelector("#totalLikesNumber")
+      let contenuOfSquare = totalOfLikes.textContent;
 
+      // si le coeur a la classe liked
+      if(heartIcon.classList.contains("liked")){
+        // transformation en nombre de la string récupéré et decrementation
+        numberOfLike = parseInt(contenu)
+        numberOfLike --
+
+        // visuel du nombre de like avec decrementation
+        likesString.textContent = numberOfLike.toString();
+
+        // changement du visuel du coeur
+        heartIcon.classList.remove("liked");
+
+        // soustraction sur le total des likes
+        totalOfLikeDecrementate = parseInt(contenuOfSquare)
+        totalOfLikeDecrementate --
+
+        totalOfLikes.textContent = totalOfLikeDecrementate.toString();
+      } else {
+        // si le coeur n'a pas la classe liked
+
+        // transformation en nombre de la string récupéré et incrémentation
+        numberOfLike = parseInt(contenu)
+        numberOfLike ++
+
+        // visuel du nombre de like incrémenté
+        likesString.textContent = numberOfLike.toString();
+
+        // changement du visuel du coeur
+        heartIcon.classList.add("liked");
+
+        // ajout sur le total des likes
+        totalOfLikeIncrementate = parseInt(contenuOfSquare)
+        totalOfLikeIncrementate ++
+
+        totalOfLikes.textContent = totalOfLikeIncrementate.toString();
+      };
     });
-
-  }
-  /*hearts.forEach(heart => {
-  });*/
+  };
 };
 
 async function recoverPhotoIdForZoom(){
@@ -68,4 +107,4 @@ async function recoverPhotoIdForZoom(){
   let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
 
   displayLightbox();
-}
+};
