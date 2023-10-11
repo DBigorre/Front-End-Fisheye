@@ -14,3 +14,4 @@ Faire une fonction getphotographerbyid pour recuperer les données du bon photog
 
 # faire une class du controller
 let monController = new MonController(monModel, maVue);
+

@@ -47,17 +47,30 @@ async function recoverMediaByIdForTotalOfLikes(){
 
 function incrementateLike() {
   let hearts = document.querySelectorAll(".photolike_with_icone");
-  let numberOfLike = 0;
-  let totalOfLikeIncrementate = 0;
 
-  console.log(hearts)
+
   for (let heart of hearts){
     heart.addEventListener("click", (e) => {
-      let likesString = heart.querySelector("#photo_like")
-      let contenu = likesString.textContent;
-      let heartIcon = heart.querySelector(".fa-heart");
-      let totalOfLikes = document.querySelector("#totalLikesNumber")
-      let contenuOfSquare = totalOfLikes.textContent;
+      doIncrementateLike(heart)
+    });
+    heart.addEventListener("keypress", (e) => {
+      if(e.code == "Enter"){
+        doIncrementateLike(heart)
+      };
+    });
+  };
+};
+
+function doIncrementateLike(heart) {
+  let numberOfLike = 0;
+  let totalOfLikeIncrementate = 0;
+  let totalOfLikeDecrementate = 0;
+
+  let likesString = heart.querySelector(".photo_like")
+  let contenu = likesString.textContent;
+  let heartIcon = heart.querySelector(".fa-heart");
+  let totalOfLikes = document.querySelector("#totalLikesNumber")
+  let contenuOfSquare = totalOfLikes.textContent;
 
       // si le coeur a la classe liked
       if(heartIcon.classList.contains("liked")){
@@ -95,9 +108,7 @@ function incrementateLike() {
 
         totalOfLikes.textContent = totalOfLikeIncrementate.toString();
       };
-    });
-  };
-};
+}
 
 async function recoverPhotoIdForZoom(){
   const model = new Model();

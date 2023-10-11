@@ -1,13 +1,11 @@
 function displayListPhotographer(photographers) {
-  console.log(photographers);
   let html= "";
   for (photographer of photographers) {
-    console.log(photographer)
     html += `
       <div>
         <article class="photo_link">
-          <a href="photographer.html?id=${photographer.id}" >
-          <img src=assets/photographers/photographersID/redim/${photographer.portrait} alt="Portrait du photographe" />
+          <a aria-label="Lien vers la gallerie de ${photographer.name}"  href="photographer.html?id=${photographer.id}" >
+          <img src=assets/photographers/photographersID/redim/${photographer.portrait} alt="Portrait du photographe ${photographer.name}" />
           <h2>${photographer.name}</h2>
         </a>
         </article>

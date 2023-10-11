@@ -13,45 +13,54 @@
       <img src="assets/images/logo.png" class="logo" />
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <div class="photographer_page">
+      <section class="photograph_informations">
+        <div class="photograph-header">
+          <div class="photographer_page">
 
-        </div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        <div class="photographer_portrait">
+          </div>
+          <button class="contact_button" onclick="displayModal()" tabindex="1">Contactez-moi </button>
+          <div class="photographer_portrait">
 
+          </div>
         </div>
-      </div>
+      </section>
+      
       <div class="filter"> Trier par
-        <button class="filter_choice"> <span>Popularité</span> <i class="fa-solid fa-chevron-down"></i> </button>
-        <div class="filter_menu">
-          <div class="popularity">Popularité <i class="fa-solid fa-chevron-up"></i></div>
+        <button class="filter_choice" aria-controls="menu_of_filter" aria-expanded="false" aria-label="menu_of_filter" tabindex="2"> <span>Popularité</span> <i class="fa-solid fa-chevron-down"></i> </button>
+        <div class="filter_menu" id="menu_of_filter">
+          <div class="popularity" tabindex="2">Popularité <i class="fa-solid fa-chevron-up"></i></div>
           <hr>
-          <div class="date">Date <i class="fa-solid fa-chevron-up"></i></div>
+          <div class="date" tabindex="2">Date <i class="fa-solid fa-chevron-up"></i></div>
           <hr>
-          <div class="title">Titre <i class="fa-solid fa-chevron-up"></i></div>
+          <div class="title" tabindex="2">Titre <i class="fa-solid fa-chevron-up"></i></div>
         </div>
       </div>
-      <div class="photographer_gallerie">
 
-      </div>
+      <nav role="navigation">
+        <div class="photographer_gallerie" role="navigation">
+
+        </div>
+      </nav>
+
       <div class="square_total_likes">
 
       </div>
-      <div class="lightbox">
-        <div id="close">
-          <i class="fa-regular fa-circle-xmark"></i>
-        </div>
-        <div class="carousel">
-          <button id="less"> - </button>
-          <div class="result">
-            <div class="carousel-container">
-            </div>
-          </div>
-          <button id="more"> + </button>
-        </div>
-      </div>
+
     </main>
+
+    <div class="lightbox">
+      <div id="close">
+        <i class="fa-regular fa-circle-xmark"></i>
+      </div>
+      <div class="carousel">
+        <button id="less"> <i class="fa-solid fa-chevron-left" ></i> </button>
+        <div class="result">
+          <div class="carousel-container">
+          </div>
+        </div>
+        <button id="more"> <i class="fa-solid fa-chevron-right" ></i> </button>
+      </div>
+    </div>
 
     <div id="contact_modal">
 			<div class="modal">
@@ -62,9 +71,25 @@
 				<form>
 					<div>
 						<label>Prénom</label>
-						<input />
+            <input class="text-control" type="text" id="first-input" name="first" minlength="2" required >
+            <div id="first-error" class="error-message"></div>
+          </div>
+          <div>
+						<label>Nom</label>
+						<input class="text-control" type="text" id="last-input" name="last" required >
+            <div id="last-error" class="error-message"></div>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <div>
+						<label>Email</label>
+            <input class="text-control" type="email" id="email-input" name="email" required>
+            <div id="email-error" class="error-message"></div>
+          </div>
+          <div>
+						<label>Votre message</label>
+						<textarea id="textarea" required></textarea>
+            <div id="textarea-error" class="error-message"></div>
+					</div>
+          <button class="contact_button" id="send">Envoyer</button>
 				</form>
 			</div>
 		</div>
@@ -76,6 +101,7 @@
     <script src="/scripts/utils/utils.js"></script>
     <script> photographerInit()</script>
     <script>recoverMediaByIdForTotalOfLikes()</script>
-    
+    <script> verificationOfFormModal()</script>
+
   </body>
 </html>

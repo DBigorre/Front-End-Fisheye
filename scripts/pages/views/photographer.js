@@ -17,7 +17,7 @@ function displayPhotographerPage(photographer, mediaByPhotographerIdArray) {
 function getPhotographerPortrait(photographer){
   let portrait = "";
   portrait += `
-    <img id="portrait" src=assets/photographers/photographersID/redim/${photographer.portrait} alt="Portrait du photographe" />
+    <img id="portrait" src=assets/photographers/photographersID/redim/${photographer.portrait} alt="Portrait du photographe ${photographer.name}" />
   `
   let htmlPhotographerPortrait = document.querySelector(".photographer_portrait")
   htmlPhotographerPortrait.innerHTML = portrait
@@ -46,31 +46,39 @@ async function getFilterChoice(){
 
 
   filter_menu.addEventListener("click", function (event){
-    btn.style.display = "block"
-    if (event.target.classList == "date"){
-      btn_text.innerHTML = "Date"
-      filterByBtn("date")
-    }
-
-    if (event.target.classList == "title"){
-      btn_text.innerHTML = "Titre"
-      filterByBtn("title")
-    }
-
-    if (event.target.classList == "popularity"){
-      btn_text.innerHTML = "Popularité"
-      filterByBtn("popularity")
-    }
-    filter_menu.style.display = "none"
+    launchSort(event.target.classList, btn_text, filter_menu, btn)
+  });
+  filter_menu.addEventListener("keypress", function (event){
+    launchSort(event.target.classList, btn_text, filter_menu, btn)
   });
 };
 
+function launchSort(categorie, btn_text, filter_menu, btn){
+  btn.style.display = "block"
+
+  if (categorie == "date"){
+    btn_text.innerHTML = "Date"
+    filterByBtn("date")
+  }
+
+  if (categorie == "title"){
+    btn_text.innerHTML = "Titre"
+    filterByBtn("title")
+  }
+
+  if (categorie == "popularity"){
+    btn_text.innerHTML = "Popularité"
+    filterByBtn("popularity")
+  }
+  filter_menu.style.display = "none"
+}
+
 function createHtmlMediaFactorie(media) {
   if(media.image){
-    htmlMedia = `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} data-id=${media.id} alt=${media.image} />`
+    htmlMedia = `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} data-id=${media.id} alt=${media.title} tabindex="3" />`
   }
   else{
-    htmlMedia = ` <video src=assets/SamplePhotos/${media.photographerId}/${media.video} data-id=${media.id} alt=${media.video} ></video> `
+    htmlMedia = ` <video src=assets/SamplePhotos/${media.photographerId}/${media.video} data-id=${media.id} alt=${media.title} tabindex="3" ></video> `
   }
  return htmlMedia
 }
@@ -82,12 +90,12 @@ function displayMediaByPhotographerId(mediaByPhotographerIdArray){
   for (let media of mediaByPhotographerIdArray){
     htmlMedia = createHtmlMediaFactorie(media);
     gallerie += `
-      <div class="photographie-card">
+      <div class="photographie-card" role="navigation">
         ${htmlMedia}
         <div class="infos-of-photo">
           <p id="photo_name"> ${media.title}</p>
-          <div class="photolike_with_icone">
-            <p id="photo_like"> ${media.likes} </p>
+          <div class="photolike_with_icone" tabindex="3">
+            <p class="photo_like"> ${media.likes} </p>
             <i class="fa-regular fa-heart"></i>
           </div>
         </div>
@@ -121,12 +129,18 @@ function calculateTotalOfLikes(mediaByPhotographerIdArray, photographer){
 
 // carousel
 async function displayLightbox(){
-  let images = document.querySelectorAll("img");
-  let videos = document.querySelectorAll("video");
+  let images = document.querySelectorAll(".photographer_gallerie img");
+  let videos = document.querySelectorAll(".photographer_gallerie video");
   for (let image of images){
     image.addEventListener("click", function (event){
       let id = event.target.dataset.id
       realDisplayLightbox(id)
+    });
+    image.addEventListener("keypress", function (event){
+      let id = event.target.dataset.id
+      if(event.code == "Enter"){
+        realDisplayLightbox(id)
+      };
     });
   };
   for (let video of videos){
@@ -134,7 +148,14 @@ async function displayLightbox(){
       let id = event.target.dataset.id
       realDisplayLightbox(id)
     });
-  }
+    video.addEventListener("keypress", function (event){
+      let id = event.target.dataset.id
+      if(event.code == "Enter"){
+        realDisplayLightbox(id)
+      };
+    });
+  };
+
 };
 
 function realDisplayLightbox(id){
@@ -146,6 +167,36 @@ function realDisplayLightbox(id){
     media.classList.remove("visible");
   }
   elementById.classList.add("visible");
+  keyboardAccesInLightbox();
+};
+
+function keyboardAccesInLightbox(){
+  let background = document.querySelector("#main")
+  let lightbox = document.querySelector(".lightbox")
+  let firstElementOfLightbox = document.querySelector("#less")
+  let secondElementOfLightbox = document.querySelector("#more")
+  let lastElementOfLightbox = document.querySelector("#close")
+
+  if(lightbox.style.display == "block"){
+    background.setAttribute("tabindex", -1);
+    lightbox.setAttribute("tabindex", 0);
+
+    lightbox.focus();
+    lightbox.addEventListener("keypress", (event) => {
+      console.log(event.code)
+      if (event.code == "Tab") {
+        firstElementOfLightbox.setAttribute("tabindex", 1)
+        secondElementOfLightbox.setAttribute("tabindex", 2)
+        lastElementOfLightbox.setAttribute("tabindex", 3)
+        /*event.preventDefault();
+        // Redirige le focus vers le premier élément focusable dans la lightbox
+        const firstFocusableElement = lightbox.querySelector("[tabindex='0']");
+        if (firstFocusableElement) {
+          firstFocusableElement.focus();
+        }*/
+      }
+    })
+  };
 };
 
 function remplirLightbox(mediaByPhotographerIdArray){
@@ -153,9 +204,9 @@ function remplirLightbox(mediaByPhotographerIdArray){
 
   for (let media of mediaByPhotographerIdArray){
     if(media.image){
-      lightboxHtml += `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} id=${media.id} alt="" />`
+      lightboxHtml += `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} id=${media.id} alt=${media.title}  />`
     }else{
-      lightboxHtml += `<video src=assets/SamplePhotos/${media.photographerId}/${media.video} id=${media.id} alt="" ></video>`
+      lightboxHtml += `<video src=assets/SamplePhotos/${media.photographerId}/${media.video} controls id=${media.id} alt=${media.title}></video>`
     }
   }
 
@@ -173,13 +224,28 @@ function eventlistenerBtn(){
   close.addEventListener("click", function(){
     closeLightbox()
   });
+  close.addEventListener("keypress", function(event){
+    if(event.code == "Enter"){
+      closeLightbox()
+    };
+  });
 
   less.addEventListener("click", function(){
     lessInLightbox()
   });
+  less.addEventListener("keypress", (event) =>{
+    if(event.code == "Enter"){
+      lessInLightbox()
+    };
+  });
 
   more.addEventListener("click", function(){
     moreInLightbox()
+  });
+  more.addEventListener("keypress", function(event){
+    if(event.code == "Enter"){
+      moreInLightbox()
+    };
   });
 };
 
@@ -220,4 +286,83 @@ function moreInLightbox(){
   imageSuivante.classList.add("visible");
 };
 
-// probleme de css +++
+function verificationOfFormModal(){
+  const firstInput = document.getElementById('first-input');
+  const firstError = document.getElementById('first-error');
+  const lastInput = document.getElementById('last-input');
+  const lastError = document.getElementById('last-error');
+  const emailInput = document.getElementById('email-input');
+  const emailError = document.getElementById('email-error');
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const messageArea = document.getElementById('textarea');
+  const messageAreaError = document.getElementById('textarea-error');
+
+  let first_name = "";
+  let last_name = "";
+  let mail = "";
+  let message = "";
+
+  firstInput.addEventListener('blur', function() {
+    if (firstInput.value.trim().length < 2 ) {
+      firstError.innerHTML = 'Le prénom doit comporter au moins 2 caractères.';
+    } else {
+      firstError.innerHTML = ''
+      first_name = firstInput.value
+    }
+
+  });
+
+  lastInput.addEventListener('blur', function() {
+    if (lastInput.value.trim().length < 2) {
+      lastError.innerHTML = 'Le nom doit comporter au moins 2 caractères.';
+    } else {
+      lastError.innerHTML = '';
+      last_name = lastInput.value
+    }
+  });
+
+
+  emailInput.addEventListener('blur', function() {
+    if (!emailRegex.test(emailInput.value)) {
+      emailError.innerHTML = 'Veuillez entrer une adresse email valide.';
+    } else {
+      emailError.innerHTML = '';
+      mail = emailInput.value
+    }
+  });
+
+  messageArea.addEventListener('blur', function(){
+    if (messageArea.value.trim().length < 1){
+      messageAreaError.innerHTML = "Veuillez entrer un message."
+    } else {
+      messageAreaError.innerHTML = ""
+      message = messageArea.value
+    }
+  })
+  const send = document.querySelector("#send")
+
+  send.addEventListener('click', (e) =>{
+    console.log("form ok")
+    /*console.log("Prénom: " + first_name)
+    console.log("Nom: " + last_name)
+    console.log("E-mail: " + mail)
+    console.log("Message: " + message)*/
+  });
+
+
+};
+
+
+/*function sendFormInfos(first_name, last_name, mail, message){
+  const send = document.querySelector("#send")
+
+  send.addEventListener('click', (e) =>{
+    console.log("Prénom: " + first_name)
+    console.log("Nom: " + last_name)
+    console.log("E-mail: " + mail)
+    console.log("Message: " + message)
+  });
+}*/
+// probleme de close non pris en compte dans la selection clavier
+// probleme de photos qui disparaissent et réapparraissent miraculeusement et de façon totalement aléatoire
+// code sûrement possédé, penser à acheter un poulet à sacrifier

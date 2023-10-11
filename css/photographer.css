@@ -107,7 +107,7 @@ form input {
   justify-content: space-between;
 }
 
-#photo_like{
+.photo_like{
   margin-top: 0px;
 }
 
@@ -231,6 +231,9 @@ form input {
   margin-right: 3px;
   margin-left: 3px;
   font-size: smaller;
+  margin-top: 7px;
+  font-size: 15px;
+  font-weight: bolder;
 }
 
 .date{
@@ -238,13 +241,17 @@ form input {
   justify-content: space-between;
   margin-right: 3px;
   margin-left: 3px;
+  font-size: 15px;
+  font-weight: bolder;
 }
 
 .title{
+  font-size: 15px;
   display: flex;
   justify-content: space-between;
   margin-right: 3px;
   margin-left: 3px;
+  font-weight: bolder;
 }
 
 i{
@@ -280,14 +287,34 @@ i{
   display: none;
   width: 80%;
   height: 800px;
-  background-color: grey;
-  position: absolute;
+  background-color: whitesmoke;
+  position: fixed;
   top: 80px;
   left: 160px;
 }
 
 button{
-  height: 20px;
+  height: 32px;
+  width: 32px;
+  background-color: whitesmoke;
+  border: none;
+}
+
+#close{
+  color: #901C1C;
+  font-size: 32px;
+}
+
+.fa-chevron-left{
+  color: #901C1C;
+  font-size: 32px;
+  margin-left: 4px;
+}
+
+.fa-chevron-right{
+  color: #901C1C;
+  font-size: 32px;
+  margin-right: 4px;
 }
 
 .carousel-container{
@@ -298,6 +325,7 @@ button{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: inherit
 }
 
 #close{
@@ -307,13 +335,13 @@ button{
 }
 
 .carousel-container img{
-  width: 35%;
+  max-height: 784px;
   margin: auto;
   display: none;
 }
 
 .carousel-container video{
-  width: 35%;
+  max-height: 784px;
   margin: auto;
   display: none;
 }
@@ -330,4 +358,17 @@ button{
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+#contact_modal{
+  position: fixed;
+  top: 8px;
+  z-index: 5000;
+  width: 100%;
+
+}
+
+#textarea{
+  height: 100px;
+  width: 100%;
 }
