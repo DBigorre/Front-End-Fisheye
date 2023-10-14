@@ -10,21 +10,19 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="/index.html" ><img src="assets/images/logo.png" alt="Fisheye Home Page" class="logo" /></a>
     </header>
     <main id="main">
       <section class="photograph_informations">
         <div class="photograph-header">
           <div class="photographer_page">
-
           </div>
-          <button class="contact_button" onclick="displayModal()" tabindex="1">Contactez-moi </button>
+          <button class="contact_button" onclick="displayModal()" tabindex="1" aria-label="Contact Me">Contactez-moi </button>
           <div class="photographer_portrait">
-
           </div>
         </div>
       </section>
-      
+
       <div class="filter"> Trier par
         <button class="filter_choice" aria-controls="menu_of_filter" aria-expanded="false" aria-label="menu_of_filter" tabindex="2"> <span>Popularité</span> <i class="fa-solid fa-chevron-down"></i> </button>
         <div class="filter_menu" id="menu_of_filter">
@@ -36,60 +34,59 @@
         </div>
       </div>
 
-      <nav role="navigation">
-        <div class="photographer_gallerie" role="navigation">
-
-        </div>
-      </nav>
+      <div class="photographer_gallerie">
+      </div>
 
       <div class="square_total_likes">
 
       </div>
-
     </main>
 
-    <div class="lightbox">
-      <div id="close">
+    <div class="lightbox" aria-label="image closeup view">
+      <div id="close" aria-label="Close dialog">
         <i class="fa-regular fa-circle-xmark"></i>
       </div>
       <div class="carousel">
-        <button id="less"> <i class="fa-solid fa-chevron-left" ></i> </button>
+        <button id="less" aria-label="Previous image"> <i class="fa-solid fa-chevron-left" ></i> </button>
         <div class="result">
           <div class="carousel-container">
           </div>
         </div>
-        <button id="more"> <i class="fa-solid fa-chevron-right" ></i> </button>
+        <button id="more" aria-label="Next image"> <i class="fa-solid fa-chevron-right" ></i> </button>
       </div>
+    </div>
+
+    <div id="mask">
     </div>
 
     <div id="contact_modal">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact Form" />
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-            <input class="text-control" type="text" id="first-input" name="first" minlength="2" required >
+						<label id="Prenom">Prénom</label>
+            <input class="text-control" type="text" id="first-input" name="first" minlength="2" aria-labelledby="Prenom" required >
             <div id="first-error" class="error-message"></div>
           </div>
           <div>
-						<label>Nom</label>
-						<input class="text-control" type="text" id="last-input" name="last" required >
+						<label id="Nom">Nom</label>
+						<input class="text-control" type="text" id="last-input" name="last" aria-labelledby="Nom" required >
             <div id="last-error" class="error-message"></div>
 					</div>
           <div>
-						<label>Email</label>
-            <input class="text-control" type="email" id="email-input" name="email" required>
+						<label id="Email">Email</label>
+            <input class="text-control" type="email" id="email-input" name="email" aria-labelledby="Email" required>
             <div id="email-error" class="error-message"></div>
           </div>
           <div>
-						<label>Votre message</label>
-						<textarea id="textarea" required></textarea>
+						<label id="Message">Votre message</label>
+						<textarea id="textarea" aria-labelledby="Message" required></textarea>
             <div id="textarea-error" class="error-message"></div>
 					</div>
-          <button class="contact_button" id="send">Envoyer</button>
+          <button class="contact_button" id="send" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>

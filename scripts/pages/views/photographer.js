@@ -23,6 +23,7 @@ function getPhotographerPortrait(photographer){
   htmlPhotographerPortrait.innerHTML = portrait
 }
 
+// Fonction filtre
 async function filter(){
   let filter_choice = document.querySelector(".filter_choice");
   getFilterChoice();
@@ -73,6 +74,7 @@ function launchSort(categorie, btn_text, filter_menu, btn){
   filter_menu.style.display = "none"
 }
 
+// Gallerie du photographe
 function createHtmlMediaFactorie(media) {
   if(media.image){
     htmlMedia = `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} data-id=${media.id} alt=${media.title} tabindex="3" />`
@@ -95,7 +97,7 @@ function displayMediaByPhotographerId(mediaByPhotographerIdArray){
         <div class="infos-of-photo">
           <p id="photo_name"> ${media.title}</p>
           <div class="photolike_with_icone" tabindex="3">
-            <p class="photo_like"> ${media.likes} </p>
+            <p class="photo_like" aria-label="likes"> ${media.likes} </p>
             <i class="fa-regular fa-heart"></i>
           </div>
         </div>
@@ -108,6 +110,7 @@ function displayMediaByPhotographerId(mediaByPhotographerIdArray){
     recoverPhotoIdForZoom()
 };
 
+// Calcul et Affichage des likes totaux
 function calculateTotalOfLikes(mediaByPhotographerIdArray, photographer){
   let total_of_likes = 0
   let square_of_likes = ""
@@ -127,7 +130,7 @@ function calculateTotalOfLikes(mediaByPhotographerIdArray, photographer){
   htmlSquare.innerHTML = square_of_likes
 }
 
-// carousel
+// Ouverture, remplissage et écoute dans la lightbox
 async function displayLightbox(){
   let images = document.querySelectorAll(".photographer_gallerie img");
   let videos = document.querySelectorAll(".photographer_gallerie video");
@@ -159,14 +162,19 @@ async function displayLightbox(){
 };
 
 function realDisplayLightbox(id){
-  let elementById = document.getElementById(id)
+  let elementById = document.getElementById(id);
+  let mask = document.querySelector("#mask");
+  let mainContent = document.querySelector("#main");
   let lightbox = document.querySelector(".lightbox");
   lightbox.style.display = "block";
+  mask.style.display = "block";
+  mainContent.setAttribute("aria-hidden", "true");
   let medias = document.querySelectorAll(".carousel-container *")
   for(let media of medias){
     media.classList.remove("visible");
   }
   elementById.classList.add("visible");
+
   keyboardAccesInLightbox();
 };
 
@@ -183,19 +191,23 @@ function keyboardAccesInLightbox(){
 
     lightbox.focus();
     lightbox.addEventListener("keypress", (event) => {
-      console.log(event.code)
       if (event.code == "Tab") {
         firstElementOfLightbox.setAttribute("tabindex", 1)
         secondElementOfLightbox.setAttribute("tabindex", 2)
         lastElementOfLightbox.setAttribute("tabindex", 3)
-        /*event.preventDefault();
-        // Redirige le focus vers le premier élément focusable dans la lightbox
-        const firstFocusableElement = lightbox.querySelector("[tabindex='0']");
-        if (firstFocusableElement) {
-          firstFocusableElement.focus();
-        }*/
-      }
-    })
+      };
+    });
+    lightbox.addEventListener("keydown", (event) => {
+      if (event.key == "ArrowLeft"){
+        lessInLightbox()
+      };
+      if (event.code == "ArrowRight") {
+        moreInLightbox()
+      };
+      if (event.code == "Escape") {
+        closeLightbox()
+      };
+    });
   };
 };
 
@@ -250,8 +262,13 @@ function eventlistenerBtn(){
 };
 
 function closeLightbox() {
-  let lightbox = document.querySelector(".lightbox")
+  let lightbox = document.querySelector(".lightbox");
+  let mask = document.querySelector("#mask");
+  let mainContent = document.querySelector("#main");
+
   lightbox.style.display = "none"
+  mask.style.display = "none";
+  mainContent.removeAttribute("aria-hidden");
 };
 
 function lessInLightbox() {
@@ -286,6 +303,7 @@ function moreInLightbox(){
   imageSuivante.classList.add("visible");
 };
 
+// Vérification et validation du formulaire de contact
 function verificationOfFormModal(){
   const firstInput = document.getElementById('first-input');
   const firstError = document.getElementById('first-error');
@@ -348,8 +366,6 @@ function verificationOfFormModal(){
     console.log("E-mail: " + mail)
     console.log("Message: " + message)*/
   });
-
-
 };
 
 
@@ -363,6 +379,16 @@ function verificationOfFormModal(){
     console.log("Message: " + message)
   });
 }*/
+
+
+// Problèmes magiques
 // probleme de close non pris en compte dans la selection clavier
-// probleme de photos qui disparaissent et réapparraissent miraculeusement et de façon totalement aléatoire
-// code sûrement possédé, penser à acheter un poulet à sacrifier
+// fleches qui ne fonctionnent plus dans le carousel si nvda en marche en même temps???
+
+// Problèmes Figma
+// Revoir le 8 de figma photographer.js et le 9
+
+// Autres
+// Formulaire qui plante au moment de l'envoie (non récupération des données)
+// Likes non incrémenter ou décrementer si filtres titre ou date actif
+// Rajouter le nom du photographe sur le formulaire

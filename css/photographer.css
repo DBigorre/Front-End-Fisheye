@@ -291,6 +291,7 @@ i{
   position: fixed;
   top: 80px;
   left: 160px;
+  z-index: 101;
 }
 
 button{
@@ -325,7 +326,7 @@ button{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: inherit
+  height: inherit;
 }
 
 #close{
@@ -371,4 +372,21 @@ button{
 #textarea{
   height: 100px;
   width: 100%;
+}
+
+.error-message {
+  color: red;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+#mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: none;
 }

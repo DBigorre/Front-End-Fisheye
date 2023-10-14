@@ -1,4 +1,3 @@
-
 async function init() {
   // Récupère les datas des photographes
   const model = new Model();
@@ -7,33 +6,36 @@ async function init() {
   displayListPhotographer(photographers);
 };
 
+// Recuperation du model, et des données du photographe
 async function photographerInit(){
-  const model = new Model(); // recuperation du model
+  const model = new Model();
 
   let id = getIdFromUrl()
 
   let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
-  displayMediaByPhotographerId(mediaByPhotographerIdArray); //recuperation des medias du photographe
+  displayMediaByPhotographerId(mediaByPhotographerIdArray);
 
   let photographer = await model.getPhotographerById(id);
 
-  displayPhotographerPage(photographer, mediaByPhotographerIdArray); // recuperation des infos du photographe
+  // lancement des fonctions utiles à la page du photographe
+  displayPhotographerPage(photographer, mediaByPhotographerIdArray);
   getPhotographerPortrait(photographer);
   filter();
   incrementateLike()
 };
 
+// Fonction des différents filtres
 async function filterByBtn(type = "popularity"){
-  const model = new Model(); // recuperation du model
+  const model = new Model();
 
   let id = getIdFromUrl()
 
   let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id, type);
 
   displayMediaByPhotographerId(mediaByPhotographerIdArray);
+};
 
-}
-
+// Fonction des likes totaux
 async function recoverMediaByIdForTotalOfLikes(){
   const model = new Model(); // recuperation du model
 
@@ -45,6 +47,7 @@ async function recoverMediaByIdForTotalOfLikes(){
   calculateTotalOfLikes(mediaByPhotographerIdArray, photographer);
 }
 
+// Incrementation et decrementation des likes
 function incrementateLike() {
   let hearts = document.querySelectorAll(".photolike_with_icone");
 
@@ -110,12 +113,9 @@ function doIncrementateLike(heart) {
       };
 }
 
+// Fonction pour la lightbox
 async function recoverPhotoIdForZoom(){
   const model = new Model();
-
-  let id = getIdFromUrl();
-
-  let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id);
 
   displayLightbox();
 };
