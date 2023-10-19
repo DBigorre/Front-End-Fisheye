@@ -33,6 +33,7 @@ async function filterByBtn(type = "popularity"){
   let mediaByPhotographerIdArray = await model.getMediasByPhotographerId(id, type);
 
   displayMediaByPhotographerId(mediaByPhotographerIdArray);
+  incrementateLike();
 };
 
 // Fonction des likes totaux

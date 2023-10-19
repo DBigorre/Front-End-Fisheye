@@ -8,8 +8,9 @@ function displayPhotographerPage(photographer, mediaByPhotographerIdArray) {
       <p> ${photographer.tagline}</p>
     </div>
   `
-
-  let htmlPhotographerPage = document.querySelector(".photographer_page")
+  let formTitle = document.getElementById("formPhotographerName");
+  formTitle.innerText += photographer.name
+  let htmlPhotographerPage = document.querySelector(".photographer_page");
   htmlPhotographerPage.innerHTML = html
   remplirLightbox(mediaByPhotographerIdArray)
 }
@@ -207,6 +208,12 @@ function keyboardAccesInLightbox(){
       if (event.code == "Escape") {
         closeLightbox()
       };
+      if (event.key == "q") {
+        lessInLightbox()
+      };
+      if (event.key == "d") {
+        moreInLightbox()
+      };
     });
   };
 };
@@ -245,19 +252,9 @@ function eventlistenerBtn(){
   less.addEventListener("click", function(){
     lessInLightbox()
   });
-  less.addEventListener("keypress", (event) =>{
-    if(event.code == "Enter"){
-      lessInLightbox()
-    };
-  });
 
   more.addEventListener("click", function(){
     moreInLightbox()
-  });
-  more.addEventListener("keypress", function(event){
-    if(event.code == "Enter"){
-      moreInLightbox()
-    };
   });
 };
 
@@ -357,38 +354,13 @@ function verificationOfFormModal(){
       message = messageArea.value
     }
   })
-  const send = document.querySelector("#send")
+  const form = document.querySelector("#contact_modal form")
 
-  send.addEventListener('click', (e) =>{
-    console.log("form ok")
-    /*console.log("Prénom: " + first_name)
-    console.log("Nom: " + last_name)
-    console.log("E-mail: " + mail)
-    console.log("Message: " + message)*/
-  });
-};
-
-
-/*function sendFormInfos(first_name, last_name, mail, message){
-  const send = document.querySelector("#send")
-
-  send.addEventListener('click', (e) =>{
+  form.addEventListener('submit', (e) =>{
+    e.preventDefault();
     console.log("Prénom: " + first_name)
     console.log("Nom: " + last_name)
     console.log("E-mail: " + mail)
     console.log("Message: " + message)
   });
-}*/
-
-
-// Problèmes magiques
-// probleme de close non pris en compte dans la selection clavier
-// fleches qui ne fonctionnent plus dans le carousel si nvda en marche en même temps???
-
-// Problèmes Figma
-// Revoir le 8 de figma photographer.js et le 9
-
-// Autres
-// Formulaire qui plante au moment de l'envoie (non récupération des données)
-// Likes non incrémenter ou décrementer si filtres titre ou date actif
-// Rajouter le nom du photographe sur le formulaire
+};
