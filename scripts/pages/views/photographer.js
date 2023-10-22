@@ -355,6 +355,20 @@ function verificationOfFormModal(){
     }
   })
   const form = document.querySelector("#contact_modal form")
+  const contactModal = document.querySelector("#contact_modal")
+  let background = document.querySelector("#main")
+
+  if (contactModal.style.display == "block"){
+    background.setAttribute("tabindex", -1);
+    contactModal.setAttribute("tabindex", 0);
+    form.focus();
+  }
+
+  form.addEventListener("keydown", (event) => {
+    if (event.code == "Escape") {
+      closeModal()
+    };
+  });
 
   form.addEventListener('submit', (e) =>{
     e.preventDefault();
@@ -362,5 +376,6 @@ function verificationOfFormModal(){
     console.log("Nom: " + last_name)
     console.log("E-mail: " + mail)
     console.log("Message: " + message)
+    closeModal()
   });
 };
