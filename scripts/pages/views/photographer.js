@@ -167,14 +167,18 @@ function realDisplayLightbox(id){
   let mask = document.querySelector("#mask");
   let mainContent = document.querySelector("#main");
   let lightbox = document.querySelector(".lightbox");
+  let title = document.getElementById("carousselTitle");
+
   lightbox.style.display = "block";
   mask.style.display = "block";
   mainContent.setAttribute("aria-hidden", "true");
   let medias = document.querySelectorAll(".carousel-container *")
   for(let media of medias){
     media.classList.remove("visible");
+
   }
   elementById.classList.add("visible");
+  title.innerText = elementById.getAttribute("alt");
 
   keyboardAccesInLightbox();
 };
@@ -223,9 +227,9 @@ function remplirLightbox(mediaByPhotographerIdArray){
 
   for (let media of mediaByPhotographerIdArray){
     if(media.image){
-      lightboxHtml += `<img src=assets/SamplePhotos/${media.photographerId}/${media.image} id=${media.id} alt=${media.title}  />`
+      lightboxHtml += `<img src="assets/SamplePhotos/${media.photographerId}/${media.image}" id="${media.id}" alt="${media.title}"  />`
     }else{
-      lightboxHtml += `<video src=assets/SamplePhotos/${media.photographerId}/${media.video} controls id=${media.id} alt=${media.title}></video>`
+      lightboxHtml += `<video src="assets/SamplePhotos/${media.photographerId}/${media.video}" controls id="${media.id}" alt="${media.title}"></video>`
     }
   }
 
@@ -271,6 +275,7 @@ function closeLightbox() {
 function lessInLightbox() {
   let image = document.querySelector(".carousel-container img.visible");
   let video = document.querySelector(".carousel-container video.visible");
+  let title = document.getElementById("carousselTitle");
   let imagePrecedente = ""
 
   if(image){
@@ -281,10 +286,10 @@ function lessInLightbox() {
     imagePrecedente = video.previousElementSibling;
     video.classList.remove("visible");
   }
-  console.log(imagePrecedente)
   if(imagePrecedente == null){
     imagePrecedente = document.querySelector(".carousel-container :last-child")
   }
+  title.innerText = imagePrecedente.getAttribute("alt");
 
   imagePrecedente.classList.add("visible");
 
@@ -293,9 +298,12 @@ function lessInLightbox() {
 function moreInLightbox(){
   let image = document.querySelector(".carousel-container .visible");
   let imageSuivante = image.nextElementSibling;
+  let title = document.getElementById("carousselTitle");
+
   if(imageSuivante == null){
     imageSuivante = document.querySelector(".carousel-container :first-child")
   }
+  title.innerText = imageSuivante.getAttribute("alt");
   image.classList.remove("visible");
   imageSuivante.classList.add("visible");
 };

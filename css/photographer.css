@@ -306,6 +306,12 @@ button{
   font-size: 32px;
 }
 
+#carousselTitle{
+  color: #901C1C;
+  font-size: 21px;
+  font-weight: normal;
+}
+
 .fa-chevron-left{
   color: #901C1C;
   font-size: 32px;
@@ -336,13 +342,13 @@ button{
 }
 
 .carousel-container img{
-  max-height: 784px;
+  max-height: 700px;
   margin: auto;
   display: none;
 }
 
 .carousel-container video{
-  max-height: 784px;
+  max-height: 700px;
   margin: auto;
   display: none;
 }
